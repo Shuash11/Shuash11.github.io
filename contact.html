@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact â€” Shuash</title>
+  <meta name="description" content="Get in touch with Shuash â€” available for freelance projects, collaborations, and creative work.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+
+  <div class="preloader" id="preloader">
+    <div class="preloader__count"><span id="preload-count">0</span><span class="pct">%</span></div>
+    <div class="preloader__label">Shuash <span>Â·</span> Portfolio</div>
+  </div>
+
+  <div class="scrollbar" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" data-magnetic>
+        <span class="logo__mark">S</span>
+        <span>shuash<span class="logo__dot">.</span></span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="work.html" class="nav__link">Work</a></li>
+          <li><a href="contact.html" class="nav__link is-active">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="header__status"><span class="pulse"></span> Open to work</a>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Home</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="work.html" class="mobile-menu__link">Work</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <div class="mobile-menu__meta">Available for new projects</div>
+  </div>
+
+  <main>
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow" data-reveal>Contact</span>
+        <h1 class="contact-cta mt-8" data-split data-reveal="up">Let's build<br>something <span class="serif">great</span></h1>
+        <p class="lead mt-8" style="max-width: 460px;" data-reveal="left">
+          Have a project, an idea, or just want to say hi? My inbox is always open â€” I reply within 24 hours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact grid -->
+    <section class="section section--tight" style="padding-top:0;">
+      <div class="container">
+        <div class="contact-grid">
+          <div data-reveal="left">
+            <div class="contact-list">
+              <div class="contact-row">
+                <span class="contact-row__label">Email</span>
+                <a href="mailto:hello@shuash.dev">hello@shuash.dev</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-row__label">Phone</span>
+                <a href="tel:+00000000000">+00 000 000 0000</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-row__label">Location</span>
+                <span style="font-family:var(--sans); font-weight:600;">Remote Â· Worldwide</span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-row__label">Socials</span>
+                <span style="display:flex; gap:14px;">
+                  <a href="https://github.com/Shuash11" target="_blank" rel="noopener" aria-label="GitHub"><img src="https://cdn.simpleicons.org/github/F4F4F0" width="19" height="19" alt=""></a>
+                  <a href="https://x.com" target="_blank" rel="noopener" aria-label="X"><img src="https://cdn.simpleicons.org/x/F4F4F0" width="17" height="17" alt=""></a>
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="https://cdn.simpleicons.org/linkedin/F4F4F0" width="17" height="17" alt=""></a>
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/F4F4F0" width="19" height="19" alt=""></a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <form id="contact-form" data-reveal="right" novalidate>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+            </div>
+            <div class="field">
+              <label for="email">Your email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="field">
+              <label for="budget">Project type</label>
+              <select id="budget" name="budget" style="width:100%;padding:18px 20px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--bg-2);color:var(--text);font-size:16px;outline:none;">
+                <option value="web">Website / Web app</option>
+                <option value="brand">Brand identity</option>
+                <option value="motion">Motion / 3D</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Tell me about it</label>
+              <textarea id="message" name="message" placeholder="Timeline, goals, budgetâ€¦" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--solid magnetic" data-magnetic>Send message <span class="btn__arrow">â†’</span></button>
+            <p class="form-note" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a href="contact.html" class="footer__big" data-magnetic>Let's talk <span class="arrow">â†—</span></a>
+        <div class="footer__socials">
+          <a href="https://github.com/Shuash11" target="_blank" rel="noopener" class="social" aria-label="GitHub"><img src="https://cdn.simpleicons.org/github/F4F4F0" width="20" height="20" alt=""></a>
+          <a href="https://dribbble.com" target="_blank" rel="noopener" class="social" aria-label="Dribbble"><img src="https://cdn.simpleicons.org/dribbble/F4F4F0" width="20" height="20" alt=""></a>
+          <a href="https://x.com" target="_blank" rel="noopener" class="social" aria-label="X"><img src="https://cdn.simpleicons.org/x/F4F4F0" width="18" height="18" alt=""></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="social" aria-label="LinkedIn"><img src="https://cdn.simpleicons.org/linkedin/F4F4F0" width="18" height="18" alt=""></a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" class="social" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/F4F4F0" width="20" height="20" alt=""></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>Â© <span data-year>2026</span> Shuash. All rights reserved.</span>
+        <a href="#top">Back to top â†‘</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

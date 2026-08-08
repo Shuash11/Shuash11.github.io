@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000">
+  <defs>
+    <linearGradient id="g" x1="1" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#1a1b20"/>
+      <stop offset="0.6" stop-color="#101115"/>
+      <stop offset="1" stop-color="#0b0b0d"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0.75" cy="0.3" r="1">
+      <stop offset="0" stop-color="#ff4d6d" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ff4d6d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="58"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/></filter>
+  </defs>
+  <rect width="1600" height="2000" fill="url(#g)"/>
+  <rect width="1600" height="2000" fill="url(#r)"/>
+  <g fill="none" stroke="#ff4d6d" stroke-width="2">
+    <rect x="350" y="620" width="760" height="760" rx="300" opacity="0.3" transform="rotate(45 730 1000)"/>
+    <rect x="410" y="680" width="760" height="760" rx="340" opacity="0.14" transform="rotate(45 790 1060)"/>
+  </g>
+  <g opacity="0.85">
+    <circle cx="360" cy="400" r="8" fill="#ff4d6d"/>
+    <circle cx="440" cy="460" r="4" fill="#ff4d6d" opacity="0.6"/>
+    <circle cx="300" cy="480" r="3" fill="#ff4d6d" opacity="0.4"/>
+  </g>
+  <rect width="1600" height="2000" filter="url(#n)" opacity="0.6"/>
+</svg>

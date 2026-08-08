@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About â€” Shuash</title>
+  <meta name="description" content="About Shuash â€” creative developer and designer, 8+ years of crafting motion-rich digital experiences.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+
+  <div class="preloader" id="preloader">
+    <div class="preloader__count"><span id="preload-count">0</span><span class="pct">%</span></div>
+    <div class="preloader__label">Shuash <span>Â·</span> Portfolio</div>
+  </div>
+
+  <div class="scrollbar" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" data-magnetic>
+        <span class="logo__mark">S</span>
+        <span>shuash<span class="logo__dot">.</span></span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link is-active">About</a></li>
+          <li><a href="work.html" class="nav__link">Work</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="header__status"><span class="pulse"></span> Open to work</a>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <a href="index.html" class="mobile-menu__link">Home</a>
+    <a href="about.html" class="mobile-menu__link">About</a>
+    <a href="work.html" class="mobile-menu__link">Work</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <div class="mobile-menu__meta">Available for new projects</div>
+  </div>
+
+  <main>
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow" data-reveal>About me</span>
+        <h1 class="display mt-8" data-split data-reveal="up">The person behind<br>the <span class="display--serif">pixels</span></h1>
+        <div class="page-hero__meta" data-reveal="left">
+          <span>Designer Ã— Developer</span><span class="sep"></span><span>8+ years</span><span class="sep"></span><span>Based anywhere â€” GMT+8</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portrait + bio -->
+    <section class="section section--tight" style="padding-top:0;">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-portrait" data-reveal="left">
+            <div class="about-portrait__img">
+              <!-- Replace with your portrait: swap the src for your own photo -->
+              <img src="assets/img/portrait.svg" alt="Portrait of Shuash">
+            </div>
+            <div class="about-portrait__badge">
+              <span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--accent-ink);display:inline-block;"></span>
+              Open to new projects
+            </div>
+          </div>
+          <div>
+            <p class="lead" data-reveal="up">
+              Hi â€” I'm Shuash. I sit at the intersection of design and engineering, where a scroll becomes a journey and a click feels tactile. For the last 8+ years I've helped startups and studios ship digital products people remember.
+            </p>
+            <p class="lead mt-8" data-reveal="up" style="--rd:100ms">
+              My work is motion-first: interfaces that morph, reveal, and respond to how you actually move through them. Every project gets obsessive attention to timing, easing, and the 200ms nobody notices but everyone feels.
+            </p>
+
+            <div class="mt-12">
+              <div class="skill" data-reveal="up">
+                <div class="skill__row">
+                  <span class="skill__name">Front-end development</span>
+                  <span class="skill__pct">95%</span>
+                </div>
+                <div class="skill__bar"><span data-fill="95%"></span></div>
+              </div>
+              <div class="skill" data-reveal="up" style="--rd:80ms">
+                <div class="skill__row">
+                  <span class="skill__name">UI / UX design</span>
+                  <span class="skill__pct">90%</span>
+                </div>
+                <div class="skill__bar"><span data-fill="90%"></span></div>
+              </div>
+              <div class="skill" data-reveal="up" style="--rd:160ms">
+                <div class="skill__row">
+                  <span class="skill__name">Motion &amp; interaction</span>
+                  <span class="skill__pct">92%</span>
+                </div>
+                <div class="skill__bar"><span data-fill="92%"></span></div>
+              </div>
+              <div class="skill" data-reveal="up" style="--rd:240ms">
+                <div class="skill__row">
+                  <span class="skill__name">Creative direction</span>
+                  <span class="skill__pct">84%</span>
+                </div>
+                <div class="skill__bar"><span data-fill="84%"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section section--tight">
+      <div class="container">
+        <span class="eyebrow" data-reveal>What I do</span>
+        <h2 class="section-title mt-8" data-split data-reveal="up">Services</h2>
+        <div class="services mt-12">
+          <div class="service" data-reveal="up">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="service__title">Web design</h3>
+            <p class="service__desc">Interfaces designed around content, hierarchy, and the way a story should unfold.</p>
+          </div>
+          <div class="service" data-reveal="up" style="--rd:80ms">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg>
+            </div>
+            <h3 class="service__title">Development</h3>
+            <p class="service__desc">Fast, accessible, semantic front-end built to production standards â€” no bloated frameworks.</p>
+          </div>
+          <div class="service" data-reveal="up" style="--rd:160ms">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <h3 class="service__title">Brand identity</h3>
+            <p class="service__desc">Logos, type, color, and a visual language that scales from favicon to billboard.</p>
+          </div>
+          <div class="service" data-reveal="up" style="--rd:240ms">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <h3 class="service__title">Motion &amp; 3D</h3>
+            <p class="service__desc">Scroll choreography, micro-interactions, and WebGL scenes that make products feel alive.</p>
+          </div>
+          <div class="service" data-reveal="up" style="--rd:320ms">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg>
+            </div>
+            <h3 class="service__title">Design systems</h3>
+            <p class="service__desc">Token-based systems that keep multi-page products consistent, fast, and easy to maintain.</p>
+          </div>
+          <div class="service" data-reveal="up" style="--rd:400ms">
+            <div class="service__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2v6.5l-5 5V21h15v-7.5l-5-5V2"/><path d="M9.5 2h5"/><circle cx="12" cy="14" r="2.2"/></svg>
+            </div>
+            <h3 class="service__title">Creative direction</h3>
+            <p class="service__desc">End-to-end art direction: campaign ideas, concept boards, and executions that land.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section section--tight">
+      <div class="container">
+        <span class="eyebrow" data-reveal>The journey</span>
+        <h2 class="section-title mt-8" data-split data-reveal="up">Milestones</h2>
+        <div class="timeline mt-12" style="max-width: 720px;">
+          <div class="tl-item" data-reveal="left">
+            <div class="tl-item__year">2018</div>
+            <div class="tl-item__title">Freelance roots</div>
+            <p class="tl-item__desc">Began crafting marketing sites and landing pages for local studios â€” discovered a love for animation.</p>
+          </div>
+          <div class="tl-item" data-reveal="left">
+            <div class="tl-item__year">2020</div>
+            <div class="tl-item__title">First studio role</div>
+            <p class="tl-item__desc">Joined a creative agency as front-end developer, shipping award-adjacent campaigns for global brands.</p>
+          </div>
+          <div class="tl-item" data-reveal="left">
+            <div class="tl-item__year">2022</div>
+            <div class="tl-item__title">Motion specialist</div>
+            <p class="tl-item__desc">Deep-dove into WebGL and scroll-driven storytelling â€” motion became the product, not a garnish.</p>
+          </div>
+          <div class="tl-item" data-reveal="left">
+            <div class="tl-item__year">2024</div>
+            <div class="tl-item__title">Independent</div>
+            <p class="tl-item__desc">Back to building for founders and studios directly â€” fewer layers, more of the work that matters.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--tight">
+      <div class="container">
+        <div data-reveal="zoom">
+          <h2 class="section-title" style="font-size: clamp(38px, 6.4vw, 92px);" data-split>Want to work<br>together<span class="display--serif">?</span></h2>
+          <div class="mt-8">
+            <a href="contact.html" class="btn btn--solid magnetic" data-magnetic>Say hello <span class="btn__arrow">â†’</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a href="contact.html" class="footer__big" data-magnetic>Let's talk <span class="arrow">â†—</span></a>
+        <div class="footer__socials">
+          <a href="https://github.com/Shuash11" target="_blank" rel="noopener" class="social" aria-label="GitHub"><img src="https://cdn.simpleicons.org/github/F4F4F0" width="20" height="20" alt=""></a>
+          <a href="https://dribbble.com" target="_blank" rel="noopener" class="social" aria-label="Dribbble"><img src="https://cdn.simpleicons.org/dribbble/F4F4F0" width="20" height="20" alt=""></a>
+          <a href="https://x.com" target="_blank" rel="noopener" class="social" aria-label="X"><img src="https://cdn.simpleicons.org/x/F4F4F0" width="18" height="18" alt=""></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="social" aria-label="LinkedIn"><img src="https://cdn.simpleicons.org/linkedin/F4F4F0" width="18" height="18" alt=""></a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" class="social" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/F4F4F0" width="20" height="20" alt=""></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>Â© <span data-year>2026</span> Shuash. All rights reserved.</span>
+        <a href="#top">Back to top â†‘</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
