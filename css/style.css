@@ -419,7 +419,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 }
 
 .hero__title {
-  font-size: clamp(64px, 10.5vw, 148px);
+  font-size: clamp(72px, 11.5vw, 166px);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 0.9;
@@ -989,7 +989,7 @@ html.lenis, html.lenis body { height: auto; }
   .nav-toggle.is-open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
   .nav-toggle.is-open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
   .header__status { display: none; }
-  .hero__title { font-size: clamp(48px, 14.5vw, 120px); }
+  .hero__title { font-size: clamp(56px, 17vw, 120px); }
   .hero__meta { font-size: 11px; letter-spacing: 0.14em; }
   .hero__content { padding-bottom: 32px; }
   .hero__inner { min-height: calc(100svh - 150px); }
