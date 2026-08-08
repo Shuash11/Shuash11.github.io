@@ -202,8 +202,12 @@ body.no-scroll { overflow: hidden; }
   transform: perspective(900px) rotateX(3.5deg);
   transform-origin: center top;
   transition: transform 0.5s var(--ease);
+  animation: work-note-in 0.9s var(--ease-out);
 }
 .work-note:hover { transform: perspective(900px) rotateX(0deg) translateY(-3px); }
+@keyframes work-note-in {
+  from { opacity: 0; transform: perspective(900px) rotateX(5deg) translateY(16px); }
+}
 .work-note__icon {
   flex: 0 0 auto;
   display: grid;
@@ -220,13 +224,6 @@ body.no-scroll { overflow: hidden; }
   font-size: 14px;
   line-height: 1.55;
   color: var(--muted);
-}
-.work-note[data-reveal].in-view {
-  transform: perspective(900px) rotateX(3.5deg);
-  transition: transform 0.5s var(--ease);
-}
-.work-note[data-reveal].in-view:hover {
-  transform: perspective(900px) rotateX(0deg) translateY(-3px);
 }
 
 .eyebrow {
