@@ -284,7 +284,6 @@
 
   /* ---------------- Hero scroll morph (HOME) ---------------- */
   const heroFigure = document.querySelector(".hero__figure");
-  const heroTitle = document.querySelector(".hero__title");
   const heroGlow = document.querySelector(".hero__glow");
   const heroProgress = document.querySelector(".hero__progress .bar");
   if (heroFigure && page === "home") {
@@ -297,7 +296,6 @@
       const ease = 1 - Math.pow(1 - k, 3);
       heroFigure.style.transform = `scale(${1.08 - ease * 0.08}) translateY(${(y * 0.08).toFixed(1)}px)`;
       if (heroGlow) heroGlow.style.opacity = `${(1 - ease * 0.7).toFixed(2)}`;
-      if (heroTitle) heroTitle.style.transform = `translateY(${(y * 0.16).toFixed(1)}px)`;
       if (heroProgress) {
         const circ = heroProgress.getTotalLength() || 182;
         heroProgress.style.strokeDasharray = circ;

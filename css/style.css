@@ -398,7 +398,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 
 .hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: end;
   gap: clamp(24px, 4vw, 64px);
   min-height: calc(100svh - 200px);
@@ -439,7 +439,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: clamp(340px, 62vh, 640px);
+  height: clamp(400px, 72vh, 760px);
   will-change: transform;
 }
 .hero__figure::after {
@@ -973,7 +973,7 @@ html.lenis, html.lenis body { height: auto; }
     gap: 20px;
     min-height: 0;
   }
-  .hero__figure { height: clamp(280px, 42vh, 420px); }
+  .hero__figure { height: clamp(320px, 48vh, 480px); }
   .hero__glow { width: 90%; right: -20%; top: 30%; }
 }
 
