@@ -455,27 +455,6 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   filter: blur(2px);
   pointer-events: none;
 }
-.hero__slices {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  height: 100%;
-  transform: translateX(-50%);
-}
-.hero__slices__bob {
-  position: relative;
-  height: 100%;
-  animation: heroFloat 7s ease-in-out infinite alternate;
-}
-.hero--scatter .hero__img { display: none; }
-.hero__slice {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transform-origin: 50% 95%;
-  will-change: transform, opacity;
-  pointer-events: none;
-}
 .hero__img {
   position: relative;
   z-index: 2;
@@ -484,6 +463,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 46px 90px rgba(0, 0, 0, 0.55)) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
+  animation: heroFloat 7s ease-in-out infinite alternate;
   will-change: transform;
 }
 @keyframes heroFloat {
