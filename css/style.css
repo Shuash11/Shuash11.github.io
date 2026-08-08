@@ -1127,6 +1127,8 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   color: var(--faint);
 }
 .footer__bottom a:hover { color: var(--accent); }
+.footer--minimal { padding: 24px 0; }
+.footer--minimal .footer__bottom { margin-top: 0; padding-top: 0; border-top: 0; }
 
 /* ---------- Preloader ---------- */
 .preloader {
