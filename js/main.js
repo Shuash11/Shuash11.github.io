@@ -312,9 +312,9 @@
     onScroll();
   }
 
-  /* ---------------- About stack 3D morph (ABOUT) ---------------- */
+  /* ---------------- About stack 3D morph ---------------- */
   const aboutStack = document.querySelector(".about-stack");
-  if (aboutStack && page === "about" && !prefersReduced) {
+  if (aboutStack && !prefersReduced) {
     const aTitle = aboutStack.querySelector(".about-stack__title");
     const aMedia = aboutStack.querySelector(".about-stack__img");
     const aBody = aboutStack.querySelector(".about-stack__body");
@@ -383,10 +383,10 @@
   /* ---------------- Scrollspy (nav active state) ---------------- */
   if (page === "home") {
     const spyMap = [
-      { sel: ".hero", href: "index.html" },
-      { sel: ".about-morph", href: "about.html" },
-      { sel: "#work", href: "work.html" },
-      { sel: "#contact-cta", href: "contact.html" }
+      { sel: "#home", href: "#home" },
+      { sel: "#about", href: "#about" },
+      { sel: "#work", href: "#work" },
+      { sel: "#contact", href: "#contact" }
     ];
     const navLinks = document.querySelectorAll(".nav__link");
     const updateSpy = () => {
@@ -398,13 +398,27 @@
       });
       navLinks.forEach((l) => {
         const href = l.getAttribute("href");
-        l.classList.toggle("is-active", current ? href === current : href === "index.html");
+        l.classList.toggle("is-active", current ? href === current : href === "#home");
       });
     };
     addEventListener("scroll", updateSpy, { passive: true });
     addEventListener("resize", updateSpy, { passive: true });
     updateSpy();
   }
+
+  /* ---------------- Smooth anchor scrolling ---------------- */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(id === "#home" ? 0 : el, { offset: id === "#home" ? 0 : -76, duration: 1.4 });
+      else if (id === "#home") window.scrollTo({ top: 0, behavior: "smooth" });
+      else el.scrollIntoView({ behavior: "smooth" });
+    });
+  });
 
   /* ---------------- About portrait parallax ---------------- */
   const portrait = document.querySelector(".about-portrait__img");
