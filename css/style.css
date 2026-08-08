@@ -128,7 +128,19 @@ body.no-scroll { overflow: hidden; }
 .ring-card__name { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
 .ring-card__cat { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .work-split { white-space: nowrap; }
-.work-head .work-split { font-size: clamp(52px, 9.5vw, 132px); }
+.work-head .work-split {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(52px, 9.5vw, 132px);
+  letter-spacing: -0.03em;
+  color: #f2f5ff;
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 0 #3d57a8,
+    0 4px 0 #2f4489,
+    0 7px 0 #23346b,
+    0 12px 30px rgba(6, 11, 30, 0.6);
+}
 .work-split__l, .work-split__r { display: inline-block; will-change: transform; }
 .work-split__l { margin-right: 0.24em; }
 .work-head { text-align: center; }
@@ -420,6 +432,11 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   .about-stack__img { margin-top: clamp(-56px, -5vh, -32px); }
   .about-stack__img img { height: clamp(240px, 38vh, 380px); }
   .about-stack__body { margin-top: clamp(24px, 3.5vh, 36px); }
+}
+@media (max-width: 970px) {
+  .js-ring .work-ring { margin-top: 8px; }
+  .work-head .lead { margin-top: 12px; }
+  .work-ring__center img { height: clamp(260px, 38vh, 420px); }
 }
 
 /* ---------- Header ---------- */
