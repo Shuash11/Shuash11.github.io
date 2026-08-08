@@ -63,57 +63,44 @@
       </div>
     </section>
 
-    <!-- Portrait + bio -->
-    <section class="section section--tight" style="padding-top:0;">
+    <!-- Half-body portrait + bio -->
+    <section class="section section--tight about-morph" style="padding-top:0;" data-morph>
       <div class="container">
-        <div class="about-grid">
-          <div class="about-portrait" data-reveal="left">
-            <div class="about-portrait__img">
-              <!-- Replace with your portrait: swap the src for your own photo -->
-              <img src="assets/img/portrait.svg" alt="Portrait of Joashua">
-            </div>
-            <div class="about-portrait__badge">
-              <span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--accent-ink);display:inline-block;"></span>
-              Open to new projects
-            </div>
-          </div>
-          <div>
-            <p class="lead" data-reveal="up">
-              Hi — I'm Joashua. I sit at the intersection of design and engineering, where a scroll becomes a journey and a click feels tactile. For the last 8+ years I've helped startups and studios ship digital products people remember.
-            </p>
-            <p class="lead mt-8" data-reveal="up" style="--rd:100ms">
-              My work is motion-first: interfaces that morph, reveal, and respond to how you actually move through them. Every project gets obsessive attention to timing, easing, and the 200ms nobody notices but everyone feels.
-            </p>
+        <div class="about-half" data-morph-media>
+          <img src="assets/img/hero-half.png" alt="Half-body portrait of Joashua" draggable="false">
+        </div>
+        <div class="about-half__body" data-morph-body>
+          <p class="lead">Hi — I'm Joashua. I sit at the intersection of design and engineering, where a scroll becomes a journey and a click feels tactile. For the last 8+ years I've helped startups and studios ship digital products people remember.</p>
+          <p class="lead mt-8">My work is motion-first: interfaces that morph, reveal, and respond to how you actually move through them. Every project gets obsessive attention to timing, easing, and the 200ms nobody notices but everyone feels.</p>
 
-            <div class="mt-12">
-              <div class="skill" data-reveal="up">
-                <div class="skill__row">
-                  <span class="skill__name">Front-end development</span>
-                  <span class="skill__pct">95%</span>
-                </div>
-                <div class="skill__bar"><span data-fill="95%"></span></div>
+          <div class="mt-12">
+            <div class="skill" data-reveal="up">
+              <div class="skill__row">
+                <span class="skill__name">Front-end development</span>
+                <span class="skill__pct">95%</span>
               </div>
-              <div class="skill" data-reveal="up" style="--rd:80ms">
-                <div class="skill__row">
-                  <span class="skill__name">UI / UX design</span>
-                  <span class="skill__pct">90%</span>
-                </div>
-                <div class="skill__bar"><span data-fill="90%"></span></div>
+              <div class="skill__bar"><span data-fill="95%"></span></div>
+            </div>
+            <div class="skill" data-reveal="up" style="--rd:80ms">
+              <div class="skill__row">
+                <span class="skill__name">UI / UX design</span>
+                <span class="skill__pct">90%</span>
               </div>
-              <div class="skill" data-reveal="up" style="--rd:160ms">
-                <div class="skill__row">
-                  <span class="skill__name">Motion &amp; interaction</span>
-                  <span class="skill__pct">92%</span>
-                </div>
-                <div class="skill__bar"><span data-fill="92%"></span></div>
+              <div class="skill__bar"><span data-fill="90%"></span></div>
+            </div>
+            <div class="skill" data-reveal="up" style="--rd:160ms">
+              <div class="skill__row">
+                <span class="skill__name">Mobile app development</span>
+                <span class="skill__pct">88%</span>
               </div>
-              <div class="skill" data-reveal="up" style="--rd:240ms">
-                <div class="skill__row">
-                  <span class="skill__name">Creative direction</span>
-                  <span class="skill__pct">84%</span>
-                </div>
-                <div class="skill__bar"><span data-fill="84%"></span></div>
+              <div class="skill__bar"><span data-fill="88%"></span></div>
+            </div>
+            <div class="skill" data-reveal="up" style="--rd:240ms">
+              <div class="skill__row">
+                <span class="skill__name">Computer science</span>
+                <span class="skill__pct">90%</span>
               </div>
+              <div class="skill__bar"><span data-fill="90%"></span></div>
             </div>
           </div>
         </div>

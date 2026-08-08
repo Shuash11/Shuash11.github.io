@@ -240,6 +240,32 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   to { transform: translateX(-100%); }
 }
 
+/* ---------- About half-body morph ---------- */
+.about-half {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+.about-half img {
+  position: relative;
+  height: clamp(360px, 60vh, 620px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 34px 70px rgba(0, 0, 0, 0.5));
+  will-change: transform, opacity;
+}
+.about-half__body {
+  max-width: 720px;
+  margin: clamp(48px, 7vh, 84px) auto 0;
+  will-change: transform, opacity;
+}
+@media (max-width: 970px) {
+  .about-half img { height: clamp(300px, 46vh, 470px); }
+  .about-half__body { margin-top: clamp(36px, 5vh, 56px); }
+}
+
 /* ---------- Header ---------- */
 .header {
   position: fixed;

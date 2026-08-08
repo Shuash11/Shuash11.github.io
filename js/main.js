@@ -312,6 +312,38 @@
     onScroll();
   }
 
+  /* ---------------- Section morph (scroll-in wipe) ---------------- */
+  const morphSections = document.querySelectorAll("[data-morph]");
+  if (morphSections.length && !prefersReduced) {
+    let morphTick = 0;
+    const applySectionMorph = () => {
+      morphTick = 0;
+      const vh = window.innerHeight;
+      morphSections.forEach((s) => {
+        const r = s.getBoundingClientRect();
+        const p = Math.min(Math.max(1 - r.top / vh, 0), 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        const media = s.querySelector("[data-morph-media]");
+        const body = s.querySelector("[data-morph-body]");
+        if (media) {
+          media.style.transform = `translateY(${(1 - e) * 42}%) scale(${1.06 - e * 0.06})`;
+          media.style.opacity = e;
+        }
+        if (body) {
+          body.style.transform = `translateY(${(1 - e) * 44}px)`;
+          body.style.opacity = e;
+        }
+      });
+    };
+    const onMorph = () => {
+      if (morphTick) return;
+      morphTick = requestAnimationFrame(applySectionMorph);
+    };
+    addEventListener("scroll", onMorph, { passive: true });
+    addEventListener("resize", onMorph, { passive: true });
+    applySectionMorph();
+  }
+
   /* ---------------- About portrait parallax ---------------- */
   const portrait = document.querySelector(".about-portrait__img");
   if (portrait && page === "about") {
