@@ -121,6 +121,8 @@ body.no-scroll { overflow: hidden; }
 .work-split { white-space: nowrap; }
 .work-split__l, .work-split__r { display: inline-block; will-change: transform; }
 .work-split__l { margin-right: 0.24em; }
+.work-head { text-align: center; }
+.work-head .lead { margin-left: auto; margin-right: auto; }
 .js-ring .work-ring { margin-top: clamp(24px, 4vh, 40px); }
 .js-ring .work-ring__stage { perspective: 1400px; }
 @media (min-width: 970px) {
