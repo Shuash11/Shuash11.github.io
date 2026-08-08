@@ -99,7 +99,7 @@ body.no-scroll { overflow: hidden; }
 .work-ring__world { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; }
 .work-ring__center { order: -1; width: 100%; text-align: center; }
 .work-ring__center img {
-  height: clamp(300px, 44vh, 520px);
+  height: clamp(320px, 46vh, 540px);
   width: auto;
   max-width: 100%;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
@@ -148,7 +148,7 @@ body.no-scroll { overflow: hidden; }
     z-index: 2;
     will-change: transform;
   }
-  .js-ring .work-ring__center img { height: clamp(340px, 50vh, 600px); }
+  .js-ring .work-ring__center img { height: clamp(360px, 54vh, 640px); }
 }
 .section--tight { padding: clamp(72px, 9vw, 120px) 0; }
 
