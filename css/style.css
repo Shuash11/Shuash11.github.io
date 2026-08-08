@@ -1345,3 +1345,44 @@ html.lenis, html.lenis body { height: auto; }
   text-decoration: none;
 }
 .lightbox__link:hover { filter: brightness(1.12); }
+
+/* ---------- Contact ring (hero-styled) ---------- */
+.contact { position: relative; overflow: hidden; }
+.contact .container { position: relative; z-index: 2; }
+.contact .hero__scrim { opacity: 0.6; }
+.js-ring .work-ring__stage { position: relative; }
+.contact-ring__title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(52px, 8.5vw, 132px);
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  white-space: nowrap;
+  color: #f2f5ff;
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 0 #3d57a8,
+    0 4px 0 #2f4489,
+    0 7px 0 #23346b,
+    0 12px 30px rgba(6, 11, 30, 0.6);
+  pointer-events: none;
+  user-select: none;
+}
+.ring-card--icon .ring-card__img {
+  display: grid;
+  place-items: center;
+  background: var(--bg-2);
+}
+.ring-card--icon .ring-card__img img {
+  width: 46%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+}
+.ring-card--icon:hover .ring-card__img img { opacity: 1; transform: scale(1.08); }

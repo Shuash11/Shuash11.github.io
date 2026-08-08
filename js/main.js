@@ -370,36 +370,50 @@
     applyWorkSplit();
   }
 
-  /* ---------------- Work orbit carousel ---------------- */
-  const orbitCards = document.querySelectorAll(".ring-card");
-  const orbitStage = document.querySelector(".work-ring__stage");
-  const orbitCenter = document.querySelector(".work-ring__center");
-  const ringImg = orbitCenter ? orbitCenter.querySelector("img") : null;
-  const orbitStart = performance.now();
-  if (orbitCards.length) document.documentElement.classList.add("js-ring");
+  /* ---------------- Orbit carousel (work + contact rings) ---------------- */
+  const orbitStages = [...document.querySelectorAll(".work-ring__stage")];
+  if (orbitStages.length) document.documentElement.classList.add("js-ring");
   const orbitDesktop = () => matchMedia("(min-width: 970px)").matches;
-  const orbitRadius = () => {
-    const w = orbitStage ? orbitStage.getBoundingClientRect().width : 0;
+  const orbitRadius = (stage) => {
+    const w = stage.getBoundingClientRect().width;
     return orbitDesktop()
       ? Math.min(440, Math.max(300, w * 0.26))
       : Math.min(150, Math.max(92, w * 0.36));
   };
   const placeOrbit = (a) => {
-    if (!orbitStage) return;
-    const r = orbitRadius();
-    orbitCards.forEach((card, i) => {
-      const th = a + (i / orbitCards.length) * Math.PI * 2;
-      card.style.transform = `translate(-50%, -50%) rotate(${th.toFixed(4)}rad) translateX(${r.toFixed(1)}px) rotate(${(-th).toFixed(4)}rad)`;
+    orbitStages.forEach((stage) => {
+      const cards = [...stage.querySelectorAll(".ring-card")];
+      const img = stage.querySelector(".work-ring__center img");
+      if (!cards.length) return;
+      const r = orbitRadius(stage);
+      cards.forEach((card, i) => {
+        const th = a + (i / cards.length) * Math.PI * 2;
+        card.style.transform = `translate(-50%, -50%) rotate(${th.toFixed(4)}rad) translateX(${r.toFixed(1)}px) rotate(${(-th).toFixed(4)}rad)`;
+      });
+      if (img) {
+        img.style.transform = `translateY(${(Math.sin(performance.now() * 0.0011) * 8).toFixed(1)}px)`;
+      }
     });
   };
-  if (orbitCards.length && !prefersReduced) {
+  const orbitStart = performance.now();
+  if (orbitStages.length && !prefersReduced) {
     const orbitPeriod = 30000;
     const applyOrbit = () => {
       const t = performance.now() - orbitStart;
-      placeOrbit((t / orbitPeriod) * Math.PI * 2);
-      if (ringImg) {
-        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 8).toFixed(1)}px)`;
-      }
+      orbitStages.forEach((stage) => {
+        const cards = [...stage.querySelectorAll(".ring-card")];
+        const img = stage.querySelector(".work-ring__center img");
+        if (cards.length) {
+          const r = orbitRadius(stage);
+          cards.forEach((card, i) => {
+            const th = (t / orbitPeriod) * Math.PI * 2 + (i / cards.length) * Math.PI * 2;
+            card.style.transform = `translate(-50%, -50%) rotate(${th.toFixed(4)}rad) translateX(${r.toFixed(1)}px) rotate(${(-th).toFixed(4)}rad)`;
+          });
+        }
+        if (img) {
+          img.style.transform = `translateY(${(Math.sin(t * 0.0011) * 8).toFixed(1)}px)`;
+        }
+      });
       requestAnimationFrame(applyOrbit);
     };
     requestAnimationFrame(applyOrbit);
@@ -506,10 +520,9 @@
   /* ---------------- Footer year ---------------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
-  /* ---------------- Work cards: open link or zoom ---------------- */
-  const ringWorld = document.querySelector(".work-ring__world");
-  const ringCenter = document.querySelector(".work-ring__center");
-  if (ringWorld) {
+  /* ---------------- Ring cards: open link or zoom (per ring) ---------------- */
+  document.querySelectorAll(".work-ring__world").forEach((ringWorld) => {
+    const ringCenter = ringWorld.querySelector(".work-ring__center");
     let lightbox = null;
     const closeLightbox = () => {
       if (!lightbox) return;
@@ -568,7 +581,7 @@
       document.body.appendChild(lightbox);
       requestAnimationFrame(() => requestAnimationFrame(() => lightbox.classList.add("is-open")));
     };
-    const cards = [...document.querySelectorAll(".ring-card")].map((el) => ({
+    const cards = [...ringWorld.querySelectorAll(".ring-card")].map((el) => ({
       el,
       z: parseFloat(getComputedStyle(el).getPropertyValue("--z")) || 0
     }));
@@ -594,5 +607,5 @@
     addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeLightbox();
     });
-  }
+  });
 })();
