@@ -992,8 +992,9 @@ html.lenis, html.lenis body { height: auto; }
   .hero__title { font-size: clamp(64px, 19.5vw, 120px); }
   .hero__meta { font-size: 11px; letter-spacing: 0.14em; }
   .hero__content { padding-bottom: 32px; }
-  .hero__inner { min-height: calc(100svh - 150px); }
-  .hero__figure { height: clamp(300px, 46vh, 460px); }
+  .hero__inner { min-height: calc(100svh - 150px); align-items: flex-end; }
+  .hero__text { justify-content: flex-start; padding-top: clamp(14px, 3svh, 30px); }
+  .hero__figure { height: clamp(320px, 46vh, 470px); margin-top: clamp(-70px, -5vh, -30px); }
   .hero__glow { width: 90%; right: -20%; top: 30%; }
 }
 
