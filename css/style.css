@@ -442,11 +442,26 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 @media (max-width: 970px) {
   .js-ring .work-ring { margin-top: 8px; }
   .work-head .lead { margin-top: 12px; }
-  .work-ring__world { flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 12px; }
-  .work-ring__center { order: -1; width: auto; flex: 0 0 auto; min-width: 0; }
-  .work-ring__center img { height: clamp(300px, 44vh, 480px); max-width: 100%; }
-  .ring-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; flex: 1 1 auto; min-width: 0; }
-  .ring-card { width: 100%; min-width: 0; }
+  .js-ring .work-ring__world { position: relative; height: calc(44vh + 64px); min-height: 400px; }
+  .js-ring .ring-cards { position: absolute; inset: 0; }
+  .js-ring .work-ring__center {
+    order: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .js-ring .work-ring__center img { height: clamp(300px, 44vh, 480px); max-width: none; }
+  .js-ring .ring-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(72px, 19vw, 110px);
+    z-index: 1;
+    will-change: transform;
+  }
   .ring-card__body { padding: 6px 8px; }
   .ring-card__name { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ring-card__cat { font-size: 8px; letter-spacing: 0.1em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

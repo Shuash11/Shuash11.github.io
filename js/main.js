@@ -378,9 +378,14 @@
   const orbitStart = performance.now();
   if (orbitCards.length) document.documentElement.classList.add("js-ring");
   const orbitDesktop = () => matchMedia("(min-width: 970px)").matches;
-  const orbitRadius = () => Math.min(440, Math.max(300, orbitStage.getBoundingClientRect().width * 0.26));
+  const orbitRadius = () => {
+    const w = orbitStage ? orbitStage.getBoundingClientRect().width : 0;
+    return orbitDesktop()
+      ? Math.min(440, Math.max(300, w * 0.26))
+      : Math.min(150, Math.max(92, w * 0.36));
+  };
   const placeOrbit = (a) => {
-    if (!orbitDesktop() || !orbitStage) return;
+    if (!orbitStage) return;
     const r = orbitRadius();
     orbitCards.forEach((card, i) => {
       const th = a + (i / orbitCards.length) * Math.PI * 2;
