@@ -503,4 +503,56 @@
 
   /* ---------------- Footer year ---------------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+  /* ---------------- Work cards: open link or zoom ---------------- */
+  const ringWorld = document.querySelector(".work-ring__world");
+  const ringCenter = document.querySelector(".work-ring__center");
+  if (ringWorld) {
+    let lightbox = null;
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      const lb = lightbox;
+      lightbox = null;
+      lb.classList.add("is-closing");
+      lb.addEventListener("transitionend", () => lb.remove(), { once: true });
+    };
+    const openCard = (card) => {
+      const url = card.dataset.url;
+      const img = card.querySelector(".ring-card__img img");
+      if (url) {
+        window.open(url, "_blank", "noopener");
+        return;
+      }
+      if (!img || lightbox) return;
+      lightbox = document.createElement("div");
+      lightbox.className = "lightbox";
+      const big = document.createElement("img");
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt || "";
+      lightbox.appendChild(big);
+      lightbox.addEventListener("click", closeLightbox);
+      document.body.appendChild(lightbox);
+      requestAnimationFrame(() => requestAnimationFrame(() => lightbox.classList.add("is-open")));
+    };
+    const cards = [...document.querySelectorAll(".ring-card")].map((el) => ({
+      el,
+      z: parseFloat(getComputedStyle(el).getPropertyValue("--z")) || 0
+    }));
+    ringWorld.addEventListener("click", (e) => {
+      if (ringCenter) {
+        const c = ringCenter.getBoundingClientRect();
+        if (e.clientX >= c.left && e.clientX <= c.right && e.clientY >= c.top && e.clientY <= c.bottom) return;
+      }
+      let top = null;
+      for (const c of cards) {
+        const r = c.el.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) continue;
+        if (!top || c.z > top.z) top = c;
+      }
+      if (top) openCard(top.el);
+    });
+    addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
 })();

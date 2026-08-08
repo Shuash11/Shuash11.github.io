@@ -99,7 +99,7 @@ body.no-scroll { overflow: hidden; }
 .work-ring__world { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; }
 .work-ring__center { order: -1; width: 100%; text-align: center; }
 .work-ring__center img {
-  height: clamp(320px, 46vh, 540px);
+  height: clamp(360px, 50vh, 600px);
   width: auto;
   max-width: 100%;
   -webkit-mask-image:
@@ -112,19 +112,21 @@ body.no-scroll { overflow: hidden; }
   mask-composite: intersect;
 }
 .ring-card {
-  width: clamp(140px, 20vw, 260px);
+  width: clamp(104px, 12vw, 168px);
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, filter 0.3s ease;
+  cursor: zoom-in;
 }
+.ring-card[data-url] { cursor: pointer; }
 .ring-card:hover { border-color: rgba(63, 96, 220, 0.6); }
 .ring-card__img { aspect-ratio: 4 / 3; background: var(--surface); }
 .ring-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ring-card__body { padding: 12px 14px; text-align: left; }
-.ring-card__name { font-size: 16px; font-weight: 600; letter-spacing: 0.01em; }
-.ring-card__cat { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.ring-card__body { padding: 10px 12px; text-align: left; }
+.ring-card__name { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
+.ring-card__cat { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .work-split { white-space: nowrap; }
 .work-head .work-split { font-size: clamp(52px, 9.5vw, 132px); }
 .work-split__l, .work-split__r { display: inline-block; will-change: transform; }
@@ -140,22 +142,23 @@ body.no-scroll { overflow: hidden; }
     position: absolute;
     left: var(--x);
     top: var(--y);
-    width: clamp(150px, 17vw, 256px);
+    width: clamp(104px, 11vw, 164px);
     transform: translateZ(var(--z, 0));
+    z-index: 1;
     will-change: transform;
   }
-  .js-ring .ring-card.is-back { z-index: 1; filter: brightness(0.82); }
+  .js-ring .ring-card.is-back { filter: brightness(0.82); }
   .js-ring .work-ring__center {
     order: 0;
     position: absolute;
     left: 50%;
     top: 50%;
     width: auto;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateZ(200px);
     z-index: 2;
     will-change: transform;
   }
-  .js-ring .work-ring__center img { height: clamp(360px, 54vh, 640px); }
+  .js-ring .work-ring__center img { height: clamp(430px, 62vh, 740px); }
 }
 .section--tight { padding: clamp(72px, 9vw, 120px) 0; }
 
@@ -1202,3 +1205,31 @@ html.lenis, html.lenis body { height: auto; }
   .grain { display: none; }
   .cursor-dot, .cursor-ring { display: none; }
 }
+
+/* ---------- Work card lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(4, 7, 13, 0.92);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+.lightbox.is-open { opacity: 1; }
+.lightbox.is-closing { opacity: 0; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 86vh;
+  border-radius: 14px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+  transform: scale(0.94);
+  transition: transform 0.3s ease;
+}
+.lightbox.is-open img { transform: scale(1); }
