@@ -134,10 +134,10 @@ body.no-scroll { overflow: hidden; }
 .ring-card__name { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
 .ring-card__cat { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .work-split { white-space: nowrap; }
-.work-title-3d {
+.section-title.work-title-3d {
   position: absolute;
   left: 50%;
-  top: 18%;
+  top: clamp(64px, 12vh, 176px);
   transform: translateX(-50%);
   z-index: 0;
   margin: 0;
