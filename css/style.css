@@ -78,6 +78,12 @@ body.no-scroll { overflow: hidden; }
 
 .section { padding: clamp(96px, 12vw, 160px) 0; position: relative; }
 #about, #work, #contact { scroll-margin-top: 84px; }
+#about {
+  background:
+    radial-gradient(1100px 520px at 82% -12%, rgba(199, 42, 55, 0.2), transparent 62%),
+    radial-gradient(900px 480px at 10% 108%, rgba(199, 42, 55, 0.12), transparent 60%),
+    #180d0f;
+}
 .section--tight { padding: clamp(72px, 9vw, 120px) 0; }
 
 .eyebrow {
