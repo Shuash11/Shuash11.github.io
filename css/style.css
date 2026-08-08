@@ -413,13 +413,13 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 20px clamp(0px, 6vh, 54px);
   pointer-events: none;
   will-change: transform;
 }
 
 .hero__title {
-  font-size: clamp(72px, 11.5vw, 166px);
+  font-size: clamp(72px, min(11.5vw, 13vh), 166px);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 0.9;
