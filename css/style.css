@@ -221,6 +221,13 @@ body.no-scroll { overflow: hidden; }
   line-height: 1.55;
   color: var(--muted);
 }
+.work-note[data-reveal].in-view {
+  transform: perspective(900px) rotateX(3.5deg);
+  transition: transform 0.5s var(--ease);
+}
+.work-note[data-reveal].in-view:hover {
+  transform: perspective(900px) rotateX(0deg) translateY(-3px);
+}
 
 .eyebrow {
   display: inline-flex;
