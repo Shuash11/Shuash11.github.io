@@ -445,7 +445,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   .js-ring .work-ring { margin-top: 8px; }
   .work-head .lead { margin-top: 12px; }
   .work-ring__world { flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 12px; }
-  .work-ring__center { order: 0; width: auto; flex: 0 0 auto; min-width: 0; }
+  .work-ring__center { order: -1; width: auto; flex: 0 0 auto; min-width: 0; }
   .work-ring__center img { height: clamp(300px, 44vh, 480px); max-width: 100%; }
   .ring-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; flex: 1 1 auto; min-width: 0; }
   .ring-card { width: 100%; min-width: 0; }
