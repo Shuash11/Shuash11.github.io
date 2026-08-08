@@ -312,6 +312,34 @@
     onScroll();
   }
 
+  /* ---------------- About stack 3D morph (ABOUT) ---------------- */
+  const aboutStack = document.querySelector(".about-stack");
+  if (aboutStack && page === "about" && !prefersReduced) {
+    const aTitle = aboutStack.querySelector(".about-stack__title");
+    const aMedia = aboutStack.querySelector(".about-stack__img");
+    const aBody = aboutStack.querySelector(".about-stack__body");
+    let morphTick = 0;
+    const applyAboutMorph = () => {
+      morphTick = 0;
+      const top = aboutStack.getBoundingClientRect().top + window.scrollY;
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      const k = Math.min(Math.max((y - top) / vh, 0), 1);
+      const e = 1 - Math.pow(1 - k, 3);
+      const localY = Math.max(y - top, 0);
+      if (aTitle) aTitle.style.transform = `translateY(${(localY * 0.1).toFixed(1)}px) skewX(${(-k * 1.6).toFixed(2)}deg)`;
+      if (aMedia) aMedia.style.transform = `perspective(900px) translateY(calc(${(1 - e) * 5}% + ${(localY * 0.18).toFixed(1)}px)) scale(${(1.08 - e * 0.08).toFixed(3)}) rotateX(${((1 - e) * -7).toFixed(2)}deg)`;
+      if (aBody) aBody.style.transform = `translateY(${(localY * 0.05).toFixed(1)}px)`;
+    };
+    const onAboutScroll = () => {
+      if (morphTick) return;
+      morphTick = requestAnimationFrame(applyAboutMorph);
+    };
+    addEventListener("scroll", onAboutScroll, { passive: true });
+    addEventListener("resize", onAboutScroll, { passive: true });
+    applyAboutMorph();
+  }
+
   /* ---------------- Section morph (scroll-in wipe) ---------------- */
   const morphSections = document.querySelectorAll("[data-morph]");
   if (morphSections.length && !prefersReduced) {
