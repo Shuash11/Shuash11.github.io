@@ -1,4 +1,4 @@
-# Shuash — Portfolio
+# Joashua — Portfolio
 
 Motion-first, dark portfolio. Built with pure HTML, CSS, and JavaScript.
 
@@ -21,7 +21,7 @@ assets/favicon.svg
 ## How to customize
 1. **Images** — replace the `.svg` files in `assets/img/` with your own photos/screenshots (same filenames, or update the `src` attributes in the HTML). Also swap `hero-1.svg` (home hero) and `portrait.svg` (about page).
 2. **Projects** — edit the project titles/tags/link in `work.html` and the featured 3 in `index.html`.
-3. **Name/brand** — change `Shuash` text in the header logo, hero title, and footer.
+3. **Name/brand** — change `Joashua` text in the header logo, hero title, and footer.
 4. **Email/phone/socials** — update in `contact.html` and the footers (GitHub link already points to `Shuash11`).
 5. **Accent color** — change `--accent` in `css/style.css` (`#d7ff3e`).
 
