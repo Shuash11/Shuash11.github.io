@@ -294,6 +294,9 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 }
 .about-stack__title .eyebrow { margin-bottom: clamp(18px, 3vh, 30px); }
 .about-stack__h { font-size: clamp(52px, 9.5vw, 132px); }
+.about-split { white-space: nowrap; }
+.about-split__l, .about-split__r { display: inline-block; will-change: transform; }
+.about-split__l { margin-right: -0.035em; }
 .about-stack__img {
   position: relative;
   z-index: 1;

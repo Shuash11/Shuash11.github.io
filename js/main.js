@@ -318,6 +318,8 @@
     const aTitle = aboutStack.querySelector(".about-stack__title");
     const aMedia = aboutStack.querySelector(".about-stack__img");
     const aBody = aboutStack.querySelector(".about-stack__body");
+    const aSplitL = aboutStack.querySelector(".about-split__l");
+    const aSplitR = aboutStack.querySelector(".about-split__r");
     let morphTick = 0;
     const applyAboutMorph = () => {
       morphTick = 0;
@@ -328,6 +330,8 @@
       const e = 1 - Math.pow(1 - k, 3);
       const localY = Math.max(y - top, 0);
       if (aTitle) aTitle.style.transform = `translateY(${(localY * 0.14).toFixed(1)}px) skewX(${(-k * 3.5).toFixed(2)}deg) scale(${(1.02 - e * 0.02).toFixed(3)})`;
+      if (aSplitL) aSplitL.style.transform = `translateX(${((1 - e) * -160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+      if (aSplitR) aSplitR.style.transform = `translateX(${((1 - e) * 160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
       if (aMedia) aMedia.style.transform = `perspective(900px) translateY(calc(${(1 - e) * 5}% + ${(localY * 0.18).toFixed(1)}px)) scale(${(1.08 - e * 0.08).toFixed(3)}) rotateX(${((1 - e) * -7).toFixed(2)}deg)`;
       if (aBody) aBody.style.transform = `translateY(${(localY * 0.05).toFixed(1)}px)`;
     };
