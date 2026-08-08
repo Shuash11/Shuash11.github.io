@@ -370,39 +370,36 @@
     applyWorkSplit();
   }
 
-  /* ---------------- Work scatter morph ---------------- */
-  const scatterCards = document.querySelectorAll(".ring-card");
-  if (scatterCards.length && !prefersReduced) {
-    const stage = document.querySelector(".work-ring__stage");
-    const center = document.querySelector(".work-ring__center");
-    const ringImg = center ? center.querySelector("img") : null;
-    const start = performance.now();
-    document.documentElement.classList.add("js-ring");
-    const meta = [...scatterCards].map((el, i) => ({
-      el,
-      i,
-      z: parseFloat(getComputedStyle(el).getPropertyValue("--z")) || 0,
-      rz: getComputedStyle(el).getPropertyValue("--rz") || "0deg",
-      d: parseFloat(getComputedStyle(el).getPropertyValue("--d")) || 0.12
-    }));
-    const applyScatter = () => {
-      const top = stage.getBoundingClientRect().top + window.scrollY;
-      const y = window.scrollY;
-      const vh = window.innerHeight;
-      const k = Math.min(Math.max((y + vh - top) / (vh * 0.75), 0), 1);
-      const e = 1 - Math.pow(1 - k, 3);
-      const t = performance.now() - start;
-      const localY = Math.max(y - top, 0);
-      meta.forEach((c) => {
-        const sway = Math.sin(t * 0.0009 + c.i * 1.7) * 6;
-        c.el.style.transform = `translateZ(${c.z}px) translateY(${(localY * c.d + sway).toFixed(1)}px) rotateZ(${c.rz})`;
-      });
+  /* ---------------- Work orbit carousel ---------------- */
+  const orbitCards = document.querySelectorAll(".ring-card");
+  const orbitStage = document.querySelector(".work-ring__stage");
+  const orbitCenter = document.querySelector(".work-ring__center");
+  const ringImg = orbitCenter ? orbitCenter.querySelector("img") : null;
+  const orbitStart = performance.now();
+  if (orbitCards.length) document.documentElement.classList.add("js-ring");
+  const orbitDesktop = () => matchMedia("(min-width: 970px)").matches;
+  const orbitRadius = () => Math.min(440, Math.max(300, orbitStage.getBoundingClientRect().width * 0.26));
+  const placeOrbit = (a) => {
+    if (!orbitDesktop() || !orbitStage) return;
+    const r = orbitRadius();
+    orbitCards.forEach((card, i) => {
+      const th = a + (i / orbitCards.length) * Math.PI * 2;
+      card.style.transform = `translate(-50%, -50%) rotate(${th.toFixed(4)}rad) translateX(${r.toFixed(1)}px) rotate(${(-th).toFixed(4)}rad)`;
+    });
+  };
+  if (orbitCards.length && !prefersReduced) {
+    const orbitPeriod = 30000;
+    const applyOrbit = () => {
+      const t = performance.now() - orbitStart;
+      placeOrbit((t / orbitPeriod) * Math.PI * 2);
       if (ringImg) {
-        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 10 + localY * 0.05).toFixed(1)}px) rotateX(${((1 - e) * -6).toFixed(2)}deg) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 8).toFixed(1)}px)`;
       }
-      requestAnimationFrame(applyScatter);
+      requestAnimationFrame(applyOrbit);
     };
-    requestAnimationFrame(applyScatter);
+    requestAnimationFrame(applyOrbit);
+  } else {
+    placeOrbit(0.3);
   }
 
   /* ---------------- Section morph (home teaser, continuous) ---------------- */

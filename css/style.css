@@ -155,19 +155,17 @@ body.no-scroll { overflow: hidden; }
 .js-ring .work-ring { margin-top: clamp(24px, 4vh, 40px); }
 .js-ring .work-ring__stage { perspective: 1400px; }
 @media (min-width: 970px) {
-  .js-ring .work-ring__stage { height: clamp(620px, 88vh, 940px); }
+  .js-ring .work-ring__stage { height: clamp(680px, 96vh, 1020px); }
   .js-ring .ring-cards { position: absolute; inset: 0; }
   .js-ring .work-ring__world { position: absolute; inset: 0; transform-style: preserve-3d; }
   .js-ring .ring-card {
     position: absolute;
-    left: var(--x);
-    top: var(--y);
+    left: 50%;
+    top: 50%;
     width: clamp(104px, 11vw, 164px);
-    transform: translateZ(var(--z, 0));
     z-index: 1;
     will-change: transform;
   }
-  .js-ring .ring-card.is-back { filter: brightness(0.82); }
   .js-ring .work-ring__center {
     order: 0;
     position: absolute;
@@ -178,7 +176,7 @@ body.no-scroll { overflow: hidden; }
     z-index: 2;
     will-change: transform;
   }
-  .js-ring .work-ring__center img { height: clamp(500px, 72vh, 880px); }
+  .js-ring .work-ring__center img { height: clamp(540px, 78vh, 940px); }
 }
 .section--tight { padding: clamp(72px, 9vw, 120px) 0; }
 
