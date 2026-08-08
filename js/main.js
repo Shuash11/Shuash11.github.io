@@ -150,7 +150,7 @@
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
-    document.querySelectorAll("a, button, .work-item, .card, input, textarea, .filter").forEach((el) => {
+    document.querySelectorAll("a, button, .work-item, .card, input, textarea, .filter, .ring-card, .lightbox").forEach((el) => {
       el.addEventListener("mouseenter", () => ring.classList.add("is-active"));
       el.addEventListener("mouseleave", () => ring.classList.remove("is-active"));
     });
@@ -575,7 +575,13 @@
     ringWorld.addEventListener("click", (e) => {
       if (ringCenter) {
         const c = ringCenter.getBoundingClientRect();
-        if (e.clientX >= c.left && e.clientX <= c.right && e.clientY >= c.top && e.clientY <= c.bottom) return;
+        const gw = c.width * 0.5;
+        const gh = c.height * 0.85;
+        const gl = c.left + (c.width - gw) / 2;
+        const gr = gl + gw;
+        const gt = c.top + (c.height - gh) / 2;
+        const gb = gt + gh;
+        if (e.clientX >= gl && e.clientX <= gr && e.clientY >= gt && e.clientY <= gb) return;
       }
       let top = null;
       for (const c of cards) {

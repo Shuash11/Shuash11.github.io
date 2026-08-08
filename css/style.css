@@ -1131,7 +1131,7 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 .cursor-dot, .cursor-ring {
   position: fixed;
   top: 0; left: 0;
-  z-index: 4000;
+  z-index: 10001;
   pointer-events: none;
   border-radius: 50%;
   will-change: transform;
