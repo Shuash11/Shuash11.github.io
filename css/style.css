@@ -1271,7 +1271,11 @@ html.lenis, html.lenis body { height: auto; }
   .nav-toggle.is-open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
   .header__status { display: none; }
   .hero__title { font-size: clamp(64px, 19.5vw, 120px); }
-  .hero__meta { font-size: 11px; letter-spacing: 0.14em; }
+  .hero__row { width: calc(100vw - 32px); bottom: clamp(-118px, -13svh, -88px); gap: 12px; }
+  .hero__meta { width: 100%; gap: 7px; font-size: 11px; line-height: 1.45; letter-spacing: 0.1em; }
+  .hero__meta span { display: block; white-space: normal; text-wrap: balance; }
+  .hero__scroll { font-size: 10px; letter-spacing: 0.16em; }
+  .hero__scroll .line { height: 40px; }
   .hero__content { padding-bottom: 32px; }
   .hero__inner { min-height: calc(100svh - 150px); }
   .hero__text { justify-content: flex-start; padding-top: clamp(32px, 6svh, 56px); }
@@ -1539,6 +1543,28 @@ html.lenis, html.lenis body { height: auto; }
     min-height: 440px;
   }
   .contact-asset { width: clamp(84px, 22vw, 110px); }
+  .contact-asset__label {
+    width: 96px;
+    margin-left: 50%;
+    padding: 7px 8px;
+    transform: translateX(-50%);
+  }
+  .contact-asset__label strong {
+    font-size: 10px;
+    line-height: 1.15;
+    white-space: normal;
+  }
+  .contact-asset__label small {
+    font-size: 9px;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .contact-asset--3 .contact-asset__label small { font-size: 0; }
+  .contact-asset--3 .contact-asset__label small::after {
+    content: attr(data-mobile-text);
+    font-size: 9px;
+  }
   .contact-asset--1 { left: 2%; top: 10%; }
   .contact-asset--2 { right: 2%; top: 10%; }
   .contact-asset--3 { left: 4%; bottom: 12%; }
