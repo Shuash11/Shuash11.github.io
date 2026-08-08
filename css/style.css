@@ -962,6 +962,13 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   clip-path: inset(0 0 0 0);
 }
 .preloader.is-done { clip-path: inset(0 0 100% 0); pointer-events: none; }
+.preloader {
+  animation: preloader-failsafe 2.6s ease forwards;
+}
+@keyframes preloader-failsafe {
+  0%, 62% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 100% 0); pointer-events: none; visibility: hidden; }
+}
 .preloader__count {
   font-family: var(--sans);
   font-size: clamp(90px, 22vw, 260px);
