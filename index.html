@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body data-page="home">
 
@@ -244,88 +244,58 @@
         <span class="eyebrow" data-reveal>Portfolio</span>
         <h2 class="section-title mt-8" data-split data-reveal="up">My <span class="display--serif">work</span></h2>
         <p class="lead mt-8" style="max-width: 480px;" data-reveal="left">
-          A selection of projects where design and motion meet code. Each image below is a placeholder — swap in your own screenshots.
+          A selection of projects where design and motion meet code.
         </p>
 
-        <div class="filters mt-12" data-reveal="up" role="group" aria-label="Filter projects">
-          <button class="filter is-active" data-filter="all">All</button>
-          <button class="filter" data-filter="web">Web</button>
-          <button class="filter" data-filter="brand">Brand</button>
-          <button class="filter" data-filter="motion">Motion</button>
-        </div>
-
-        <div class="grid-2 mt-12">
-          <div class="tilt-wrap" data-reveal="zoom" data-cat="web ui">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-1.svg" alt="Aurora — SaaS dashboard"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Aurora</h3>
-                  <div class="card__cat">Web · Dashboard</div>
+        <div class="work-ring mt-12" data-reveal="zoom">
+          <div class="work-ring__stage">
+            <div class="work-ring__world">
+              <article class="ring-card" style="--i:0">
+                <div class="ring-card__img"><img src="assets/img/work-1.svg" alt="Aurora — SaaS dashboard"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Aurora</h3>
+                  <span class="ring-card__cat">Web · Dashboard</span>
                 </div>
-                <span class="card__arrow">↗</span>
-              </div>
-            </article>
-          </div>
-          <div class="tilt-wrap" data-reveal="zoom" style="--rd:100ms" data-cat="web ecommerce">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-2.svg" alt="Nebula — e-commerce experience"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Nebula</h3>
-                  <div class="card__cat">Web · E-commerce</div>
+              </article>
+              <article class="ring-card" style="--i:1">
+                <div class="ring-card__img"><img src="assets/img/work-2.svg" alt="Nebula — e-commerce experience"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Nebula</h3>
+                  <span class="ring-card__cat">Web · E-commerce</span>
                 </div>
-                <span class="card__arrow">↗</span>
-              </div>
-            </article>
-          </div>
-          <div class="tilt-wrap" data-reveal="zoom" style="--rd:200ms" data-cat="brand motion">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-3.svg" alt="Pixel Forge — brand identity"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Pixel Forge</h3>
-                  <div class="card__cat">Brand · Identity</div>
+              </article>
+              <article class="ring-card" style="--i:2">
+                <div class="ring-card__img"><img src="assets/img/work-3.svg" alt="Pixel Forge — brand identity"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Pixel Forge</h3>
+                  <span class="ring-card__cat">Brand · Identity</span>
                 </div>
-                <span class="card__arrow">↗</span>
-              </div>
-            </article>
-          </div>
-          <div class="tilt-wrap" data-reveal="zoom" style="--rd:300ms" data-cat="motion brand">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-4.svg" alt="Orbit — mobile app"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Orbit</h3>
-                  <div class="card__cat">Motion · App</div>
+              </article>
+              <article class="ring-card" style="--i:3">
+                <div class="ring-card__img"><img src="assets/img/work-4.svg" alt="Orbit — mobile app"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Orbit</h3>
+                  <span class="ring-card__cat">Motion · App</span>
                 </div>
-                <span class="card__arrow">↗</span>
-              </div>
-            </article>
-          </div>
-          <div class="tilt-wrap" data-reveal="zoom" style="--rd:400ms" data-cat="web motion">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-5.svg" alt="Flux — motion and 3D experience"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Flux</h3>
-                  <div class="card__cat">Web · 3D / Motion</div>
+              </article>
+              <article class="ring-card" style="--i:4">
+                <div class="ring-card__img"><img src="assets/img/work-5.svg" alt="Flux — motion and 3D experience"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Flux</h3>
+                  <span class="ring-card__cat">Web · 3D / Motion</span>
                 </div>
-                <span class="card__arrow">↗</span>
-              </div>
-            </article>
-          </div>
-          <div class="tilt-wrap" data-reveal="zoom" style="--rd:500ms" data-cat="brand web">
-            <article class="card" data-tilt>
-              <div class="card__img"><img src="assets/img/work-6.svg" alt="Halo — open source library"></div>
-              <div class="card__body">
-                <div>
-                  <h3 class="card__name">Halo</h3>
-                  <div class="card__cat">Web · Open source</div>
+              </article>
+              <article class="ring-card" style="--i:5">
+                <div class="ring-card__img"><img src="assets/img/work-6.svg" alt="Halo — open source library"></div>
+                <div class="ring-card__body">
+                  <h3 class="ring-card__name">Halo</h3>
+                  <span class="ring-card__cat">Web · Open source</span>
                 </div>
-                <span class="card__arrow">↗</span>
+              </article>
+              <div class="work-ring__center">
+                <img src="assets/img/image3.png" alt="Joashua among his work" draggable="false">
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </div>
@@ -419,6 +389,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>

@@ -344,6 +344,33 @@
     applyAboutMorph();
   }
 
+  /* ---------------- Work 3D ring ---------------- */
+  const ringWorld = document.querySelector(".work-ring__world");
+  if (ringWorld && !prefersReduced) {
+    const stage = document.querySelector(".work-ring__stage");
+    const center = document.querySelector(".work-ring__center");
+    const ringImg = center ? center.querySelector("img") : null;
+    const start = performance.now();
+    document.documentElement.classList.add("js-ring");
+    const applyRing = () => {
+      const top = stage.getBoundingClientRect().top + window.scrollY;
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      const k = Math.min(Math.max((y + vh - top) / (vh * 0.75), 0), 1);
+      const e = 1 - Math.pow(1 - k, 3);
+      const t = performance.now() - start;
+      const angle = t * 0.006 + k * 280;
+      ringWorld.style.transform = `rotateY(${angle.toFixed(2)}deg)`;
+      if (center) center.style.transform = `translate(-50%, -50%) rotateY(${(-angle).toFixed(2)}deg)`;
+      if (ringImg) {
+        const localY = Math.max(y - top, 0);
+        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 10 + localY * 0.06).toFixed(1)}px) rotateX(${((1 - e) * -6).toFixed(2)}deg) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+      }
+      requestAnimationFrame(applyRing);
+    };
+    requestAnimationFrame(applyRing);
+  }
+
   /* ---------------- Section morph (home teaser, continuous) ---------------- */
   const morphSections = document.querySelectorAll("[data-morph]");
   if (morphSections.length && !prefersReduced) {
