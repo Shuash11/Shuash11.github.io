@@ -519,19 +519,51 @@
       lb.addEventListener("transitionend", () => lb.remove(), { once: true });
     };
     const openCard = (card) => {
+      if (lightbox) return;
       const url = card.dataset.url;
       const img = card.querySelector(".ring-card__img img");
-      if (url) {
-        window.open(url, "_blank", "noopener");
-        return;
-      }
-      if (!img || lightbox) return;
+      const name = card.querySelector(".ring-card__name");
+      const cat = card.querySelector(".ring-card__cat");
+      const desc = card.querySelector(".ring-card__desc");
       lightbox = document.createElement("div");
       lightbox.className = "lightbox";
+      const fig = document.createElement("figure");
+      fig.className = "lightbox__fig";
       const big = document.createElement("img");
-      big.src = img.currentSrc || img.src;
-      big.alt = img.alt || "";
-      lightbox.appendChild(big);
+      big.src = img ? img.currentSrc || img.src : "";
+      big.alt = img ? img.alt : "";
+      fig.appendChild(big);
+      const cap = document.createElement("figcaption");
+      cap.className = "lightbox__cap";
+      if (name) {
+        const n = document.createElement("h3");
+        n.textContent = name.textContent;
+        cap.appendChild(n);
+      }
+      if (cat) {
+        const c = document.createElement("span");
+        c.className = "lightbox__cat";
+        c.textContent = cat.textContent;
+        cap.appendChild(c);
+      }
+      if (desc) {
+        const d = document.createElement("p");
+        d.className = "lightbox__desc";
+        d.textContent = desc.textContent;
+        cap.appendChild(d);
+      }
+      if (url) {
+        const a = document.createElement("a");
+        a.className = "lightbox__link";
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = "Visit site \u2197";
+        a.addEventListener("click", (e) => e.stopPropagation());
+        cap.appendChild(a);
+      }
+      fig.appendChild(cap);
+      lightbox.appendChild(fig);
       lightbox.addEventListener("click", closeLightbox);
       document.body.appendChild(lightbox);
       requestAnimationFrame(() => requestAnimationFrame(() => lightbox.classList.add("is-open")));
