@@ -247,6 +247,18 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   justify-content: center;
   will-change: transform, opacity;
 }
+.about-half::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: clamp(0px, 0.8vh, 8px);
+  transform: translateX(-50%);
+  width: 62%;
+  height: 7%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.22) 55%, transparent 78%);
+  pointer-events: none;
+}
 .about-half img {
   position: relative;
   height: clamp(360px, 60vh, 620px);
@@ -277,10 +289,23 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 .about-stack__title .eyebrow { margin-bottom: clamp(18px, 3vh, 30px); }
 .about-stack__h { font-size: clamp(52px, 9.5vw, 132px); }
 .about-stack__img {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: clamp(36px, 6vh, 64px);
   will-change: transform, opacity;
+}
+.about-stack__img::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: clamp(0px, 0.8vh, 8px);
+  transform: translateX(-50%);
+  width: 62%;
+  height: 7%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.22) 55%, transparent 78%);
+  pointer-events: none;
 }
 .about-stack__img img {
   height: clamp(380px, 62vh, 640px);
