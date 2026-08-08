@@ -216,14 +216,11 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   user-select: none;
 }
 .marquee__track {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0;
-  animation: marquee var(--speed, 28s) linear infinite;
-  will-change: transform;
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
-.marquee--reverse .marquee__track { animation-direction: reverse; }
 .marquee__group { display: inline-flex; align-items: center; gap: 0; }
 .marquee__item {
   display: inline-flex;
