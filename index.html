@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body data-page="home">
 
@@ -161,15 +161,15 @@
       <div class="container">
         <div class="work-head">
           <span class="eyebrow" data-reveal>Portfolio</span>
-          <h2 class="section-title mt-8 work-split">
-            <span class="work-split__l"><span>My</span></span><span class="work-split__r"><span>work</span></span>
-          </h2>
           <p class="lead mt-8" style="max-width: 480px;" data-reveal="left">
             A selection of projects where design and motion meet code.
           </p>
         </div>
 
         <div class="work-ring mt-12" data-reveal="zoom">
+          <h2 class="section-title work-split work-title-3d" aria-label="My work">
+            <span class="work-split__l"><span>My</span></span><span class="work-split__r"><span>work</span></span>
+          </h2>
           <div class="work-ring__stage">
             <div class="work-ring__world">
               <article class="ring-card" style="--x:2%; --y:4%; --rz:-4deg; --z:0; --d:0.22">
@@ -200,22 +200,9 @@
                   <span class="ring-card__cat">Motion Â· App</span>
                 </div>
               </article>
-              <article class="ring-card" style="--x:3%; --y:58%; --rz:3.5deg; --z:20; --d:0.3">
-                <div class="ring-card__img"><img src="assets/img/work-5.svg" alt="Flux â€” motion and 3D experience"></div>
-                <div class="ring-card__body">
-                  <h3 class="ring-card__name">Flux</h3>
-                  <span class="ring-card__cat">Web Â· 3D / Motion</span>
-                </div>
-              </article>
-              <article class="ring-card" style="--x:60%; --y:54%; --rz:-3deg; --z:40; --d:0.24">
-                <div class="ring-card__img"><img src="assets/img/work-6.svg" alt="Halo â€” open source library"></div>
-                <div class="ring-card__body">
-                  <h3 class="ring-card__name">Halo</h3>
-                  <span class="ring-card__cat">Web Â· Open source</span>
-                </div>
-              </article>
               <div class="work-ring__center">
                 <img src="assets/img/image3-removebg-preview.png" alt="Joashua among his work" draggable="false">
+                <span class="work-ring__ground" aria-hidden="true"></span>
               </div>
             </div>
           </div>
@@ -311,6 +298,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=25"></script>
+  <script src="js/main.js?v=26"></script>
 </body>
 </html>
