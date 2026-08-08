@@ -102,7 +102,6 @@ body.no-scroll { overflow: hidden; }
   height: clamp(320px, 46vh, 540px);
   width: auto;
   max-width: 100%;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
 }
 .ring-card {
   width: clamp(140px, 20vw, 260px);
