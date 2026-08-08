@@ -442,7 +442,36 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
   height: clamp(340px, 62vh, 640px);
   will-change: transform;
 }
+.hero__figure::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 66%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, rgba(215, 255, 62, 0.22), rgba(215, 255, 62, 0.08) 55%, rgba(215, 255, 62, 0.02) 76%, transparent 82%);
+  border: 1px solid rgba(215, 255, 62, 0.3);
+  box-shadow: 0 0 80px rgba(215, 255, 62, 0.12);
+  pointer-events: none;
+}
+.hero__figure::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1.5%;
+  transform: translateX(-50%);
+  width: 54%;
+  height: 11%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.24) 55%, transparent 78%);
+  filter: blur(2px);
+  pointer-events: none;
+}
 .hero__img {
+  position: relative;
+  z-index: 2;
   height: 100%;
   width: auto;
   max-width: 100%;
