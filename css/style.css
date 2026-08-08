@@ -993,7 +993,7 @@ html.lenis, html.lenis body { height: auto; }
   .hero__meta { font-size: 11px; letter-spacing: 0.14em; }
   .hero__content { padding-bottom: 32px; }
   .hero__inner { min-height: calc(100svh - 150px); }
-  .hero__text { justify-content: flex-start; padding-top: 0; }
+  .hero__text { justify-content: flex-start; padding-top: clamp(32px, 6svh, 56px); }
   .hero__figure { height: clamp(320px, 46vh, 470px); }
   .hero__glow { width: 90%; right: -20%; top: 30%; }
 }
