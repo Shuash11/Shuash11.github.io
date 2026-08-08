@@ -14,7 +14,13 @@
   /* ---------------- Smooth scroll (Lenis) ---------------- */
   let lenis = null;
   if (!prefersReduced && typeof window.Lenis !== "undefined") {
-    lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
+    lenis = new Lenis({
+      lerp: 0.08,
+      wheelMultiplier: 0.9,
+      smoothWheel: true,
+      syncTouch: true,
+      touchMultiplier: 1.2,
+    });
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
   }
@@ -282,8 +288,9 @@
   const heroTitle = document.querySelector(".hero__title");
   const heroProgress = document.querySelector(".hero__progress .bar");
   if (heroImg && page === "home") {
-    const hero = heroImg.closest(".hero");
-    const onScroll = () => {
+    let morphTick = 0;
+    const applyMorph = () => {
+      morphTick = 0;
       const y = window.scrollY;
       const vh = window.innerHeight;
       const p = Math.min(y / vh, 1.4);
@@ -299,6 +306,10 @@
         heroProgress.style.strokeDasharray = circ;
         heroProgress.style.strokeDashoffset = circ * (1 - progress());
       }
+    };
+    const onScroll = () => {
+      if (morphTick) return;
+      morphTick = requestAnimationFrame(applyMorph);
     };
     addEventListener("scroll", onScroll, { passive: true });
     onScroll();
