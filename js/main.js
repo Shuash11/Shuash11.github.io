@@ -325,6 +325,11 @@
         const e = 1 - Math.pow(1 - p, 3);
         const media = s.querySelector("[data-morph-media]");
         const body = s.querySelector("[data-morph-body]");
+        const title = s.querySelector("[data-morph-title]");
+        if (title) {
+          title.style.transform = `translateY(${(1 - e) * -40}px)`;
+          title.style.opacity = e;
+        }
         if (media) {
           media.style.transform = `translateY(${(1 - e) * 42}%) scale(${1.06 - e * 0.06})`;
           media.style.opacity = e;
