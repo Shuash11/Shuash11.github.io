@@ -1247,6 +1247,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .hero + .marquee { display: none; }
   .nav { display: none; }
   .header { padding: 14px 0; }
   .nav-toggle {
