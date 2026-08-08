@@ -326,7 +326,7 @@
       const top = aboutStack.getBoundingClientRect().top + window.scrollY;
       const y = window.scrollY;
       const vh = window.innerHeight;
-      const k = Math.min(Math.max((y - top) / vh, 0), 1);
+      const k = Math.min(Math.max((y + vh - top) / (vh * 0.6), 0), 1);
       const e = 1 - Math.pow(1 - k, 3);
       const localY = Math.max(y - top, 0);
       if (aTitle) aTitle.style.transform = `translateY(${(localY * 0.14).toFixed(1)}px) skewX(${(-k * 3.5).toFixed(2)}deg) scale(${(1.02 - e * 0.02).toFixed(3)})`;
@@ -355,7 +355,7 @@
         const top = s.getBoundingClientRect().top + window.scrollY;
         const y = window.scrollY;
         const vh = window.innerHeight;
-        const k = Math.min(Math.max((y + vh - top) / vh, 0), 1);
+        const k = Math.min(Math.max((y + vh - top) / (vh * 0.6), 0), 1);
         const e = 1 - Math.pow(1 - k, 3);
         const localY = Math.max(y - top, 0);
         const media = s.querySelector("[data-morph-media]");
