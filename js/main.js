@@ -282,12 +282,38 @@
     });
   }
 
-  /* ---------------- Hero scroll morph (HOME) ---------------- */
+  /* ---------------- Hero scroll morph + scatter (HOME) ---------------- */
   const heroFigure = document.querySelector(".hero__figure");
   const heroTitle = document.querySelector(".hero__title");
   const heroGlow = document.querySelector(".hero__glow");
   const heroProgress = document.querySelector(".hero__progress .bar");
   if (heroFigure && page === "home") {
+    const imgSrc = heroFigure.querySelector(".hero__img")?.getAttribute("src");
+    const slices = [];
+    if (!prefersReduced && imgSrc) {
+      const N = window.innerWidth < 768 ? 6 : 12;
+      const wrap = heroFigure.querySelector(".hero__slices");
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < N; i++) {
+        const s = document.createElement("div");
+        s.className = "hero__slice";
+        s.style.backgroundImage = `url("${imgSrc}")`;
+        s.style.backgroundSize = `${N * 100}% 100%`;
+        s.style.backgroundPosition = `${(i / (N - 1)) * 100}% 0`;
+        s.style.left = `${(i / N) * 100}%`;
+        s.style.width = `${100 / N}%`;
+        frag.appendChild(s);
+        slices.push({
+          el: s,
+          dir: (i % 2 === 0 ? 1 : -1) * (0.5 + Math.random() * 1.1),
+          y: (Math.random() - 0.5) * 220,
+          rot: (Math.random() - 0.5) * 34,
+          lag: Math.random() * 0.18,
+        });
+      }
+      wrap.appendChild(frag);
+      heroFigure.classList.add("hero--scatter");
+    }
     let morphTick = 0;
     const applyMorph = () => {
       morphTick = 0;
@@ -295,7 +321,17 @@
       const vh = window.innerHeight;
       const k = Math.min(y / vh, 1);
       const ease = 1 - Math.pow(1 - k, 3);
-      heroFigure.style.transform = `scale(${1.14 - ease * 0.14}) translateY(${(y * 0.1).toFixed(1)}px)`;
+      if (slices.length) {
+        const burst = Math.min((y - vh * 0.05) / (vh * 0.85), 1);
+        const be = 1 - Math.pow(1 - Math.max(burst, 0), 3);
+        slices.forEach((s) => {
+          const p = Math.min(Math.max((be - s.lag) / (1 - s.lag), 0), 1);
+          const pe = 1 - Math.pow(1 - p, 3);
+          s.el.style.transform = `translate(${(s.dir * pe * 70).toFixed(1)}px, ${(s.y * pe).toFixed(1)}px) rotate(${(s.rot * pe).toFixed(1)}deg)`;
+          s.el.style.opacity = `${(1 - pe * 0.9).toFixed(2)}`;
+        });
+      }
+      heroFigure.style.transform = `scale(${1.08 - ease * 0.08})`;
       if (heroGlow) heroGlow.style.opacity = `${(1 - ease * 0.7).toFixed(2)}`;
       if (heroTitle) heroTitle.style.transform = `translateY(${(y * 0.16).toFixed(1)}px)`;
       if (heroProgress) {
