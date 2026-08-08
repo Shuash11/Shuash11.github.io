@@ -327,7 +327,7 @@
       const k = Math.min(Math.max((y - top) / vh, 0), 1);
       const e = 1 - Math.pow(1 - k, 3);
       const localY = Math.max(y - top, 0);
-      if (aTitle) aTitle.style.transform = `translateY(${(localY * 0.1).toFixed(1)}px) skewX(${(-k * 1.6).toFixed(2)}deg)`;
+      if (aTitle) aTitle.style.transform = `translateY(${(localY * 0.14).toFixed(1)}px) skewX(${(-k * 3.5).toFixed(2)}deg) scale(${(1.02 - e * 0.02).toFixed(3)})`;
       if (aMedia) aMedia.style.transform = `perspective(900px) translateY(calc(${(1 - e) * 5}% + ${(localY * 0.18).toFixed(1)}px)) scale(${(1.08 - e * 0.08).toFixed(3)}) rotateX(${((1 - e) * -7).toFixed(2)}deg)`;
       if (aBody) aBody.style.transform = `translateY(${(localY * 0.05).toFixed(1)}px)`;
     };
