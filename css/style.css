@@ -119,6 +119,7 @@ body.no-scroll { overflow: hidden; }
 .ring-card__name { font-size: 16px; font-weight: 600; letter-spacing: 0.01em; }
 .ring-card__cat { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .work-split { white-space: nowrap; }
+.work-head .work-split { font-size: clamp(52px, 9.5vw, 132px); }
 .work-split__l, .work-split__r { display: inline-block; will-change: transform; }
 .work-split__l { margin-right: 0.24em; }
 .work-head { text-align: center; }

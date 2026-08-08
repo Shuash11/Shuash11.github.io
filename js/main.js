@@ -356,7 +356,7 @@
       const top = workSection.getBoundingClientRect().top + window.scrollY;
       const y = window.scrollY;
       const vh = window.innerHeight;
-      const k = Math.min(Math.max((y + vh - top) / (vh * 0.4), 0), 1);
+      const k = Math.min(Math.max((y + vh - top) / (vh * 0.75), 0), 1);
       const e = 1 - Math.pow(1 - k, 3);
       if (wL) wL.style.transform = `translateX(${((1 - e) * -160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
       if (wR) wR.style.transform = `translateX(${((1 - e) * 160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
