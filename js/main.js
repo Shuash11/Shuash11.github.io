@@ -291,28 +291,34 @@
     const imgSrc = heroFigure.querySelector(".hero__img")?.getAttribute("src");
     const slices = [];
     if (!prefersReduced && imgSrc) {
-      const N = window.innerWidth < 768 ? 6 : 12;
       const wrap = heroFigure.querySelector(".hero__slices");
-      const frag = document.createDocumentFragment();
-      for (let i = 0; i < N; i++) {
-        const s = document.createElement("div");
-        s.className = "hero__slice";
-        s.style.backgroundImage = `url("${imgSrc}")`;
-        s.style.backgroundSize = `${N * 100}% 100%`;
-        s.style.backgroundPosition = `${(i / (N - 1)) * 100}% 0`;
-        s.style.left = `${(i / N) * 100}%`;
-        s.style.width = `${100 / N}%`;
-        frag.appendChild(s);
-        slices.push({
-          el: s,
-          dir: (i % 2 === 0 ? 1 : -1) * (0.5 + Math.random() * 1.1),
-          y: (Math.random() - 0.5) * 220,
-          rot: (Math.random() - 0.5) * 34,
-          lag: Math.random() * 0.18,
-        });
-      }
-      wrap.appendChild(frag);
-      heroFigure.classList.add("hero--scatter");
+      const probe = new Image();
+      probe.src = imgSrc;
+      probe.onload = () => {
+        wrap.style.aspectRatio = `${probe.naturalWidth / probe.naturalHeight}`;
+        const bob = document.createElement("div");
+        bob.className = "hero__slices__bob";
+        const N = window.innerWidth < 768 ? 6 : 12;
+        for (let i = 0; i < N; i++) {
+          const s = document.createElement("div");
+          s.className = "hero__slice";
+          s.style.backgroundImage = `url("${imgSrc}")`;
+          s.style.backgroundSize = `${N * 100}% 100%`;
+          s.style.backgroundPosition = `${(i / (N - 1)) * 100}% 0`;
+          s.style.left = `${(i / N) * 100}%`;
+          s.style.width = `${100 / N}%`;
+          bob.appendChild(s);
+          slices.push({
+            el: s,
+            dir: (i % 2 === 0 ? 1 : -1) * (0.5 + Math.random() * 1.1),
+            y: (Math.random() - 0.5) * 220,
+            rot: (Math.random() - 0.5) * 34,
+            lag: Math.random() * 0.18,
+          });
+        }
+        wrap.appendChild(bob);
+        heroFigure.classList.add("hero--scatter");
+      };
     }
     let morphTick = 0;
     const applyMorph = () => {

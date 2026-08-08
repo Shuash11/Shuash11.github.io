@@ -457,7 +457,14 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 }
 .hero__slices {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  transform: translateX(-50%);
+}
+.hero__slices__bob {
+  position: relative;
+  height: 100%;
   animation: heroFloat 7s ease-in-out infinite alternate;
 }
 .hero--scatter .hero__img { display: none; }
