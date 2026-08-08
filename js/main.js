@@ -517,6 +517,40 @@
   addEventListener("scroll", onScrollHeader, { passive: true });
   onScrollHeader();
 
+  /* ---------------- Contact assets: copy to clipboard ---------------- */
+  const copyToast = document.createElement("div");
+  copyToast.className = "copy-toast";
+  copyToast.setAttribute("role", "status");
+  document.body.appendChild(copyToast);
+  const copyFallback = (text) => {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      /* ignore */
+    }
+    ta.remove();
+  };
+  const copyToClipboard = (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).catch(() => copyFallback(text));
+    } else {
+      copyFallback(text);
+    }
+    copyToast.textContent = `Copied ${text}`;
+    copyToast.classList.add("is-show");
+    clearTimeout(copyToast._hide);
+    copyToast._hide = setTimeout(() => copyToast.classList.remove("is-show"), 1800);
+  };
+  document.querySelectorAll("[data-copy]").forEach((el) => {
+    el.addEventListener("click", () => copyToClipboard(el.dataset.copy));
+  });
+
   /* ---------------- Footer year ---------------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 

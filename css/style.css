@@ -1346,7 +1346,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 .lightbox__link:hover { filter: brightness(1.12); }
 
-/* ---------- Contact ring (hero-styled) ---------- */
+/* ---------- Contact float (hero-styled, no carousel) ---------- */
 .contact { position: relative; overflow: hidden; }
 .contact .container { position: relative; z-index: 2; }
 .contact .hero__scrim { opacity: 0.6; }
@@ -1373,16 +1373,102 @@ html.lenis, html.lenis body { height: auto; }
   pointer-events: none;
   user-select: none;
 }
-.ring-card--icon .ring-card__img {
-  display: grid;
-  place-items: center;
-  background: var(--bg-2);
+.contact-float {
+  position: absolute;
+  inset: 0;
 }
-.ring-card--icon .ring-card__img img {
-  width: 46%;
+.contact-ground {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  width: 58%;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.16) 62%, transparent 80%);
+  filter: blur(5px);
+  z-index: 1;
+  pointer-events: none;
+}
+.contact-asset {
+  position: absolute;
+  z-index: 3;
+  width: clamp(110px, 10vw, 150px);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s var(--ease-out), filter 0.3s ease;
+}
+.contact-asset--1 { left: 5%; top: 13%; --float-d: 0s; }
+.contact-asset--2 { right: 5%; top: 13%; --float-d: -1.4s; }
+.contact-asset--3 { left: 8%; bottom: 16%; --float-d: -2.6s; }
+.contact-asset--4 { right: 8%; bottom: 16%; --float-d: -3.8s; }
+.contact-asset img {
+  display: block;
+  width: 100%;
   height: auto;
-  object-fit: contain;
-  opacity: 0.92;
-  transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+  border-radius: 22px;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+  animation: float-asset 5.2s ease-in-out infinite;
+  animation-delay: var(--float-d, 0s);
+  will-change: transform;
 }
-.ring-card--icon:hover .ring-card__img img { opacity: 1; transform: scale(1.08); }
+@keyframes float-asset {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-16px) rotate(1.5deg); }
+}
+.contact-asset:hover { transform: scale(1.07); }
+.contact-asset:hover img { filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.55)); }
+.contact-asset:active img { transform: translateY(3px); }
+.contact-asset__label {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: rgba(10, 11, 15, 0.65);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+@media (max-width: 970px) {
+  .contact-float {
+    position: relative;
+    height: calc(52vh + 140px);
+    min-height: 440px;
+  }
+  .contact-asset { width: clamp(84px, 22vw, 110px); }
+  .contact-asset--1 { left: 2%; top: 10%; }
+  .contact-asset--2 { right: 2%; top: 10%; }
+  .contact-asset--3 { left: 4%; bottom: 12%; }
+  .contact-asset--4 { right: 4%; bottom: 12%; }
+}
+/* Copy feedback toast */
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 16px);
+  z-index: 10002;
+  padding: 11px 20px;
+  background: rgba(16, 18, 24, 0.92);
+  border: 1px solid rgba(215, 255, 62, 0.35);
+  border-radius: 999px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-out);
+}
+.copy-toast.is-show { opacity: 1; transform: translate(-50%, 0); }
