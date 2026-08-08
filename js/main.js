@@ -344,31 +344,65 @@
     applyAboutMorph();
   }
 
-  /* ---------------- Work 3D ring ---------------- */
-  const ringWorld = document.querySelector(".work-ring__world");
-  if (ringWorld && !prefersReduced) {
+  /* ---------------- Work split title collision ---------------- */
+  const workSplit = document.querySelector(".work-split");
+  if (workSplit && !prefersReduced) {
+    const wL = workSplit.querySelector(".work-split__l");
+    const wR = workSplit.querySelector(".work-split__r");
+    const workSection = document.getElementById("work");
+    let splitTick = 0;
+    const applyWorkSplit = () => {
+      splitTick = 0;
+      const top = workSection.getBoundingClientRect().top + window.scrollY;
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      const k = Math.min(Math.max((y + vh - top) / (vh * 0.4), 0), 1);
+      const e = 1 - Math.pow(1 - k, 3);
+      if (wL) wL.style.transform = `translateX(${((1 - e) * -160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+      if (wR) wR.style.transform = `translateX(${((1 - e) * 160).toFixed(1)}px) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+    };
+    const onWorkSplitScroll = () => {
+      if (splitTick) return;
+      splitTick = requestAnimationFrame(applyWorkSplit);
+    };
+    addEventListener("scroll", onWorkSplitScroll, { passive: true });
+    addEventListener("resize", onWorkSplitScroll, { passive: true });
+    applyWorkSplit();
+  }
+
+  /* ---------------- Work scatter morph ---------------- */
+  const scatterCards = document.querySelectorAll(".ring-card");
+  if (scatterCards.length && !prefersReduced) {
     const stage = document.querySelector(".work-ring__stage");
     const center = document.querySelector(".work-ring__center");
     const ringImg = center ? center.querySelector("img") : null;
     const start = performance.now();
     document.documentElement.classList.add("js-ring");
-    const applyRing = () => {
+    const meta = [...scatterCards].map((el, i) => ({
+      el,
+      i,
+      z: parseFloat(getComputedStyle(el).getPropertyValue("--z")) || 0,
+      rz: getComputedStyle(el).getPropertyValue("--rz") || "0deg",
+      d: parseFloat(getComputedStyle(el).getPropertyValue("--d")) || 0.12
+    }));
+    const applyScatter = () => {
       const top = stage.getBoundingClientRect().top + window.scrollY;
       const y = window.scrollY;
       const vh = window.innerHeight;
       const k = Math.min(Math.max((y + vh - top) / (vh * 0.75), 0), 1);
       const e = 1 - Math.pow(1 - k, 3);
       const t = performance.now() - start;
-      const angle = t * 0.006 + k * 280;
-      ringWorld.style.transform = `rotateY(${angle.toFixed(2)}deg)`;
-      if (center) center.style.transform = `translate(-50%, -50%) rotateY(${(-angle).toFixed(2)}deg)`;
+      const localY = Math.max(y - top, 0);
+      meta.forEach((c) => {
+        const sway = Math.sin(t * 0.0009 + c.i * 1.7) * 6;
+        c.el.style.transform = `translateZ(${c.z}px) translateY(${(localY * c.d + sway).toFixed(1)}px) rotateZ(${c.rz})`;
+      });
       if (ringImg) {
-        const localY = Math.max(y - top, 0);
-        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 10 + localY * 0.06).toFixed(1)}px) rotateX(${((1 - e) * -6).toFixed(2)}deg) scale(${(1.06 - e * 0.06).toFixed(3)})`;
+        ringImg.style.transform = `translateY(${(Math.sin(t * 0.0011) * 10 + localY * 0.05).toFixed(1)}px) rotateX(${((1 - e) * -6).toFixed(2)}deg) scale(${(1.06 - e * 0.06).toFixed(3)})`;
       }
-      requestAnimationFrame(applyRing);
+      requestAnimationFrame(applyScatter);
     };
-    requestAnimationFrame(applyRing);
+    requestAnimationFrame(applyScatter);
   }
 
   /* ---------------- Section morph (home teaser, continuous) ---------------- */

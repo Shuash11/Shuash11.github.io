@@ -118,27 +118,34 @@ body.no-scroll { overflow: hidden; }
 .ring-card__body { padding: 12px 14px; text-align: left; }
 .ring-card__name { font-size: 16px; font-weight: 600; letter-spacing: 0.01em; }
 .ring-card__cat { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.work-split { white-space: nowrap; }
+.work-split__l, .work-split__r { display: inline-block; will-change: transform; }
+.work-split__l { margin-right: 0.24em; }
 .js-ring .work-ring { margin-top: clamp(24px, 4vh, 40px); }
-.js-ring .work-ring__stage { height: clamp(500px, 76vh, 800px); perspective: 1400px; }
-.js-ring .work-ring__world { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
-.js-ring .ring-card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(140px, 17vw, 252px);
-  --r: clamp(180px, 22vw, 430px);
-  transform: translate(-50%, -50%) rotateY(calc(var(--i) * 60deg)) translateZ(var(--r));
-  backface-visibility: hidden;
-  will-change: transform;
-}
-.js-ring .work-ring__center {
-  order: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: auto;
-  transform: translate(-50%, -50%);
-  will-change: transform;
+.js-ring .work-ring__stage { perspective: 1400px; }
+@media (min-width: 970px) {
+  .js-ring .work-ring__stage { height: clamp(560px, 78vh, 820px); }
+  .js-ring .work-ring__world { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .js-ring .ring-card {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: clamp(150px, 17vw, 256px);
+    transform: translateZ(var(--z, 0));
+    will-change: transform;
+  }
+  .js-ring .ring-card.is-back { z-index: 1; filter: brightness(0.82); }
+  .js-ring .work-ring__center {
+    order: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    will-change: transform;
+  }
+  .js-ring .work-ring__center img { height: clamp(340px, 50vh, 600px); }
 }
 .section--tight { padding: clamp(72px, 9vw, 120px) 0; }
 
