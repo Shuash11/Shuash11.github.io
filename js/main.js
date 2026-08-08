@@ -554,7 +554,10 @@
   /* ---------------- Contact assets: scroll morph + reveal ---------------- */
   const contactRing = document.querySelector(".contact-ring");
   const contactAssets = contactRing ? [...contactRing.querySelectorAll(".contact-asset")] : [];
-  const morphRates = [80, -60, 100, -90];
+  const contactTitle = contactRing ? contactRing.querySelector(".contact-ring__title") : null;
+  const morphXRates = [200, -200, 240, -240];
+  const morphYRates = [150, -130, 190, -170];
+  const morphRotateRates = [18, -16, -20, 18];
   const onContactMorph = () => {
     if (!contactRing) return;
     const r = contactRing.getBoundingClientRect();
@@ -562,10 +565,21 @@
     if (r.top < vh * 0.88 && r.bottom > vh * 0.05) {
       contactRing.classList.add("is-in");
     }
+    if (prefersReduced) return;
     const p = Math.min(Math.max((vh - r.top) / (vh + r.height), 0), 1);
+    const delta = p - 0.5;
+    const morphScale = 0.92 + Math.sin(p * Math.PI) * 0.12;
     contactAssets.forEach((a, i) => {
-      a.style.setProperty("--morph-y", `${((p - 0.5) * morphRates[i % morphRates.length]).toFixed(1)}px`);
+      a.style.setProperty("--morph-x", `${(delta * morphXRates[i]).toFixed(1)}px`);
+      a.style.setProperty("--morph-y", `${(delta * morphYRates[i]).toFixed(1)}px`);
+      a.style.setProperty("--morph-rotate", `${(delta * morphRotateRates[i]).toFixed(2)}deg`);
+      a.style.setProperty("--morph-scale", morphScale.toFixed(3));
     });
+    if (contactTitle) {
+      contactTitle.style.setProperty("--title-morph-y", `${(delta * -50).toFixed(1)}px`);
+      contactTitle.style.setProperty("--title-morph-scale", (0.96 + Math.sin(p * Math.PI) * 0.06).toFixed(3));
+      contactTitle.style.setProperty("--title-morph-rotate", `${(delta * 8).toFixed(2)}deg`);
+    }
   };
   if (contactRing) {
     addEventListener("scroll", onContactMorph, { passive: true });

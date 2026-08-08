@@ -1352,10 +1352,13 @@ html.lenis, html.lenis body { height: auto; }
 .contact .hero__scrim { opacity: 0.6; }
 .js-ring .work-ring__stage { position: relative; }
 .contact-ring__title {
+  --title-morph-y: 0px;
+  --title-morph-scale: 1;
+  --title-morph-rotate: 0deg;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 18%;
+  transform: perspective(900px) translate3d(-50%, calc(-50% + var(--title-morph-y)), 0) rotateX(var(--title-morph-rotate)) scale(var(--title-morph-scale));
   z-index: 0;
   font-family: var(--sans);
   font-weight: 700;
@@ -1372,6 +1375,26 @@ html.lenis, html.lenis body { height: auto; }
     0 12px 30px rgba(6, 11, 30, 0.6);
   pointer-events: none;
   user-select: none;
+  opacity: 1;
+  transition: transform 0.25s linear;
+  will-change: transform;
+}
+.contact-ring:not(.is-in) .contact-ring__title {
+  opacity: 0;
+  transform: perspective(900px) translate3d(-50%, calc(-50% + var(--title-morph-y) - 44px), 0) rotateX(-12deg) scale(0.9);
+}
+.contact-ring.is-in .contact-ring__title {
+  animation: contact-title-enter 1s var(--ease-out) 0.08s backwards;
+}
+@keyframes contact-title-enter {
+  from {
+    opacity: 0;
+    transform: perspective(900px) translate3d(-50%, calc(-50% + var(--title-morph-y) - 44px), 0) rotateX(-12deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(900px) translate3d(-50%, calc(-50% + var(--title-morph-y)), 0) rotateX(var(--title-morph-rotate)) scale(var(--title-morph-scale));
+  }
 }
 .contact-float {
   position: absolute;
@@ -1393,7 +1416,10 @@ html.lenis, html.lenis body { height: auto; }
 .contact-asset {
   --enter-from: -90px;
   --enter-delay: 0s;
+  --morph-x: 0px;
   --morph-y: 0px;
+  --morph-rotate: 0deg;
+  --morph-scale: 1;
   position: absolute;
   z-index: 3;
   width: clamp(110px, 10vw, 150px);
@@ -1404,12 +1430,12 @@ html.lenis, html.lenis body { height: auto; }
   text-align: center;
   -webkit-tap-highlight-color: transparent;
   opacity: 1;
-  transform: translateY(var(--morph-y, 0px)) scale(1);
+  transform: translate3d(var(--morph-x), var(--morph-y), 0) rotate(var(--morph-rotate)) scale(var(--morph-scale));
   transition: transform 0.35s var(--ease-out), filter 0.3s ease;
 }
 .contact-ring:not(.is-in) .contact-asset {
   opacity: 0;
-  transform: translateY(var(--morph-y, 0px)) translateX(var(--enter-from, -90px)) scale(0.8);
+  transform: translate3d(calc(var(--morph-x) + var(--enter-from)), var(--morph-y), 0) rotate(var(--morph-rotate)) scale(0.8);
 }
 .contact-ring.is-in .contact-asset {
   animation: contact-enter 0.9s var(--ease-out) var(--enter-delay, 0s) backwards;
@@ -1417,11 +1443,11 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes contact-enter {
   from {
     opacity: 0;
-    transform: translateY(var(--morph-y, 0px)) translateX(var(--enter-from, -90px)) scale(0.8);
+    transform: translate3d(calc(var(--morph-x) + var(--enter-from)), var(--morph-y), 0) rotate(var(--morph-rotate)) scale(0.8);
   }
   to {
     opacity: 1;
-    transform: translateY(var(--morph-y, 0px)) scale(1);
+    transform: translate3d(var(--morph-x), var(--morph-y), 0) rotate(var(--morph-rotate)) scale(var(--morph-scale));
   }
 }
 .contact-asset--1 { left: 5%; top: 13%; --float-d: 0s; --enter-delay: 0s; }
@@ -1443,7 +1469,7 @@ html.lenis, html.lenis body { height: auto; }
   50% { transform: translateY(-16px) rotate(1.5deg); }
 }
 .contact-asset:hover {
-  transform: translateY(calc(var(--morph-y, 0px) - 12px)) scale(1.07);
+  transform: translate3d(var(--morph-x), calc(var(--morph-y) - 12px), 0) rotate(var(--morph-rotate)) scale(1.08);
 }
 .contact-asset:hover img { filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.55)); }
 .contact-asset:active img { transform: translateY(3px); }
@@ -1504,6 +1530,7 @@ html.lenis, html.lenis body { height: auto; }
 .contact-asset__label strong { font-size: 11px; font-weight: 650; }
 .contact-asset__label small { margin-top: 3px; font-size: 9px; color: var(--muted); }
 @media (max-width: 970px) {
+  .contact-ring__title { top: 22%; }
   .contact-float {
     position: relative;
     height: calc(52vh + 140px);
