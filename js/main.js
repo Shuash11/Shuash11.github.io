@@ -551,6 +551,28 @@
     el.addEventListener("click", () => copyToClipboard(el.dataset.copy));
   });
 
+  /* ---------------- Contact assets: scroll morph + reveal ---------------- */
+  const contactRing = document.querySelector(".contact-ring");
+  const contactAssets = contactRing ? [...contactRing.querySelectorAll(".contact-asset")] : [];
+  const morphRates = [80, -60, 100, -90];
+  const onContactMorph = () => {
+    if (!contactRing) return;
+    const r = contactRing.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (r.top < vh * 0.88 && r.bottom > vh * 0.05) {
+      contactRing.classList.add("is-in");
+    }
+    const p = Math.min(Math.max((vh - r.top) / (vh + r.height), 0), 1);
+    contactAssets.forEach((a, i) => {
+      a.style.setProperty("--morph-y", `${((p - 0.5) * morphRates[i % morphRates.length]).toFixed(1)}px`);
+    });
+  };
+  if (contactRing) {
+    addEventListener("scroll", onContactMorph, { passive: true });
+    addEventListener("resize", onContactMorph, { passive: true });
+    onContactMorph();
+  }
+
   /* ---------------- Footer year ---------------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
