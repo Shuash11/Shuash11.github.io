@@ -340,7 +340,7 @@
     applyAboutMorph();
   }
 
-  /* ---------------- Section morph (scroll-in wipe) ---------------- */
+  /* ---------------- Section morph (home teaser, continuous) ---------------- */
   const morphSections = document.querySelectorAll("[data-morph]");
   if (morphSections.length && !prefersReduced) {
     let morphTick = 0;
@@ -348,9 +348,12 @@
       morphTick = 0;
       const vh = window.innerHeight;
       morphSections.forEach((s) => {
-        const r = s.getBoundingClientRect();
-        const p = Math.min(Math.max(1 - r.top / vh, 0), 1);
-        const e = 1 - Math.pow(1 - p, 3);
+        const top = s.getBoundingClientRect().top + window.scrollY;
+        const y = window.scrollY;
+        const vh = window.innerHeight;
+        const k = Math.min(Math.max((y + vh - top) / vh, 0), 1);
+        const e = 1 - Math.pow(1 - k, 3);
+        const localY = Math.max(y - top, 0);
         const media = s.querySelector("[data-morph-media]");
         const body = s.querySelector("[data-morph-body]");
         const title = s.querySelector("[data-morph-title]");
@@ -359,11 +362,11 @@
           title.style.opacity = e;
         }
         if (media) {
-          media.style.transform = `translateY(${(1 - e) * 42}%) scale(${1.06 - e * 0.06})`;
+          media.style.transform = `perspective(900px) translateY(calc(${(1 - e) * 5}% + ${(localY * 0.18).toFixed(1)}px)) scale(${(1.08 - e * 0.08).toFixed(3)}) rotateX(${((1 - e) * -7).toFixed(2)}deg)`;
           media.style.opacity = e;
         }
         if (body) {
-          body.style.transform = `translateY(${(1 - e) * 44}px)`;
+          body.style.transform = `translateY(${(localY * 0.05).toFixed(1)}px)`;
           body.style.opacity = e;
         }
       });
@@ -375,6 +378,32 @@
     addEventListener("scroll", onMorph, { passive: true });
     addEventListener("resize", onMorph, { passive: true });
     applySectionMorph();
+  }
+
+  /* ---------------- Scrollspy (nav active state) ---------------- */
+  if (page === "home") {
+    const spyMap = [
+      { sel: ".hero", href: "index.html" },
+      { sel: ".about-morph", href: "about.html" },
+      { sel: "#work", href: "work.html" },
+      { sel: "#contact-cta", href: "contact.html" }
+    ];
+    const navLinks = document.querySelectorAll(".nav__link");
+    const updateSpy = () => {
+      const mid = window.innerHeight * 0.4;
+      let current = null;
+      spyMap.forEach(({ sel, href }) => {
+        const el = document.querySelector(sel);
+        if (el && el.getBoundingClientRect().top <= mid) current = href;
+      });
+      navLinks.forEach((l) => {
+        const href = l.getAttribute("href");
+        l.classList.toggle("is-active", current ? href === current : href === "index.html");
+      });
+    };
+    addEventListener("scroll", updateSpy, { passive: true });
+    addEventListener("resize", updateSpy, { passive: true });
+    updateSpy();
   }
 
   /* ---------------- About portrait parallax ---------------- */
