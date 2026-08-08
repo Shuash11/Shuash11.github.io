@@ -135,16 +135,11 @@ body.no-scroll { overflow: hidden; }
 .ring-card__cat { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .work-split { white-space: nowrap; }
 .section-title.work-title-3d {
-  position: absolute;
-  left: 50%;
-  top: clamp(64px, 12vh, 176px);
-  transform: translateX(-50%);
-  z-index: 0;
-  margin: 0;
   font-family: var(--sans);
   font-weight: 700;
-  font-size: clamp(52px, 9.5vw, 132px);
-  letter-spacing: -0.03em;
+  font-size: clamp(64px, 11vw, 150px);
+  letter-spacing: -0.035em;
+  line-height: 0.9;
   color: #f2f5ff;
   text-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.22),
@@ -161,6 +156,7 @@ body.no-scroll { overflow: hidden; }
 .js-ring .work-ring__stage { perspective: 1400px; }
 @media (min-width: 970px) {
   .js-ring .work-ring__stage { height: clamp(620px, 88vh, 940px); }
+  .js-ring .ring-cards { position: absolute; inset: 0; }
   .js-ring .work-ring__world { position: absolute; inset: 0; transform-style: preserve-3d; }
   .js-ring .ring-card {
     position: absolute;
@@ -448,7 +444,15 @@ h1, h2, h3, h4 { font-family: var(--sans); font-weight: 600; line-height: 1.02; 
 @media (max-width: 970px) {
   .js-ring .work-ring { margin-top: 8px; }
   .work-head .lead { margin-top: 12px; }
-  .work-ring__center img { height: clamp(320px, 46vh, 500px); }
+  .work-ring__world { flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 12px; }
+  .work-ring__center { order: 0; width: auto; flex: 0 1 auto; min-width: 0; }
+  .work-ring__center img { height: clamp(300px, 44vh, 480px); max-width: 100%; }
+  .ring-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 10px; flex: 1 1 auto; min-width: 0; }
+  .ring-card { width: 100%; }
+  .ring-card__body { padding: 6px 8px; }
+  .ring-card__name { font-size: 11px; }
+  .ring-card__cat { font-size: 8px; letter-spacing: 0.1em; }
+  .section-title.work-title-3d { font-size: clamp(48px, 16vw, 96px); }
 }
 
 /* ---------- Header ---------- */
