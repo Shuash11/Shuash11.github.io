@@ -249,6 +249,41 @@
     );
   }
 
+  /* ---------------- Navbar dropdown (Vanilla JS) ---------------- */
+  const dropdownButton = document.querySelector("#dropdownBtn");
+  const dropdownMenu = document.querySelector("#dropdownMenu");
+  if (dropdownButton && dropdownMenu) {
+    dropdownButton.addEventListener("click", function () {
+      dropdownMenu.classList.toggle("show");
+      dropdownButton.classList.toggle("open");
+      dropdownButton.setAttribute("aria-expanded", dropdownMenu.classList.contains("show"));
+    });
+    document.addEventListener("click", function (event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.remove("show");
+        dropdownButton.classList.remove("open");
+        dropdownButton.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  const mobileDropdownButton = document.querySelector("#mDropdownBtn");
+  const mobileDropdownMenu = document.querySelector("#mDropdownMenu");
+  if (mobileDropdownButton && mobileDropdownMenu) {
+    mobileDropdownButton.addEventListener("click", function () {
+      mobileDropdownMenu.classList.toggle("show");
+      mobileDropdownButton.classList.toggle("open");
+      mobileDropdownButton.setAttribute("aria-expanded", mobileDropdownMenu.classList.contains("show"));
+    });
+    menu.querySelectorAll(".mobile-dropdown-menu a").forEach((a) =>
+      a.addEventListener("click", function () {
+        mobileDropdownMenu.classList.remove("show");
+        mobileDropdownButton.classList.remove("open");
+        mobileDropdownButton.setAttribute("aria-expanded", "false");
+      })
+    );
+  }
+
   /* ---------------- Work filters ---------------- */
   const filterBar = document.querySelector(".filters");
   if (filterBar) {
