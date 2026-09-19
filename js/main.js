@@ -258,6 +258,13 @@
       dropdownButton.classList.toggle("open");
       dropdownButton.setAttribute("aria-expanded", dropdownMenu.classList.contains("show"));
     });
+    dropdownMenu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", function () {
+        dropdownMenu.classList.remove("show");
+        dropdownButton.classList.remove("open");
+        dropdownButton.setAttribute("aria-expanded", "false");
+      })
+    );
     document.addEventListener("click", function (event) {
       if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.classList.remove("show");
